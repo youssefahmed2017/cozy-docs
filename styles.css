@@ -472,6 +472,11 @@ h1, h2, h3, h4, .display-font {
 .module-card.greet .module-icon { background: rgba(255, 209, 102, 0.12); color: var(--honey); border-color: rgba(255, 209, 102, 0.3); }
 .module-card.timer .module-icon { background: rgba(125, 214, 192, 0.12); color: var(--teal); border-color: rgba(125, 214, 192, 0.3); }
 .module-card.text  .module-icon { background: rgba(183, 148, 244, 0.12); color: var(--plum); border-color: rgba(183, 148, 244, 0.3); }
+.module-card.custom .module-icon {
+    background: linear-gradient(135deg, rgba(255, 126, 182, 0.18), rgba(125, 214, 192, 0.18), rgba(255, 209, 102, 0.18));
+    color: #fff;
+    border-color: rgba(255, 182, 117, 0.4);
+}
 .module-card.ui    .module-icon { background: rgba(255, 142, 60, 0.12); color: var(--amber-deep); border-color: rgba(255, 142, 60, 0.3); }
 .module-card.det   .module-icon { background: rgba(255, 126, 182, 0.12); color: var(--rose); border-color: rgba(255, 126, 182, 0.3); }
 
