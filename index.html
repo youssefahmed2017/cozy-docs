@@ -38,6 +38,7 @@
                 <li class="nav-item"><a class="nav-link" href="#greeting">Greeting</a></li>
                 <li class="nav-item"><a class="nav-link" href="#timer">Timer</a></li>
                 <li class="nav-item"><a class="nav-link" href="#text">TextStudio</a></li>
+                <li class="nav-item"><a class="nav-link" href="#customizations">Customizations</a></li>
                 <li class="nav-item"><a class="nav-link" href="#ui">CozyUI</a></li>
                 <li class="nav-item">
                     <a class="nav-link nav-cta" href="https://pypi.org/project/cozy-kit/" target="_blank" rel="noopener">
@@ -60,7 +61,7 @@
             <div class="col-lg-6 reveal">
                 <div class="hero-tag">
                     <span class="dot"></span>
-                    <span>v0.3.6 · MIT License · Python 3.8+</span>
+                    <span>v0.3.8 · MIT License · Python 3.8+</span>
                 </div>
                 <h1>
                     A warm little <br>
@@ -120,10 +121,10 @@ ui    = CozyUI()
 <section class="section" id="features">
     <div class="container">
         <div class="text-center mb-5 reveal">
-            <span class="section-eyebrow">// Five small modules</span>
+            <span class="section-eyebrow">// Six small modules</span>
             <h2 class="section-title">Everything you need, <span class="accent">nothing you don't.</span></h2>
             <p class="section-lead mx-auto">
-                Five focused modules. Friendly APIs. Helpful errors. Zero ceremony.
+                Six focused modules. Friendly APIs. Helpful errors. Zero ceremony.
             </p>
         </div>
 
@@ -168,14 +169,27 @@ ui    = CozyUI()
             </div>
 
             <div class="col-md-6 col-lg-4">
+                <a href="#customizations" class="module-card custom">
+                    <div class="module-icon"><i class="bi bi-palette"></i></div>
+                    <h3>Customizations</h3>
+                    <p>Extends TextStudio with ANSI color, background, and style codes — wrap any string in red, bold, underline, blinking, or mix-and-match combos.</p>
+                    <div class="module-tags">
+                        <span class="module-tag">customize()</span>
+                        <span class="module-tag">ANSI</span>
+                        <span class="module-tag">new in 0.3.8</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
                 <a href="#ui" class="module-card ui">
                     <div class="module-icon"><i class="bi bi-bounding-box"></i></div>
                     <h3>CozyUI</h3>
-                    <p>Box-drawn terminal tables, titled dividers, progress bars, and clean little boxes — for when your CLI deserves better.</p>
+                    <p>Box-drawn terminal tables, titled dividers, progress bars, spinners, and clean little boxes — for when your CLI deserves better.</p>
                     <div class="module-tags">
                         <span class="module-tag">cozy_table()</span>
                         <span class="module-tag">progress_bar()</span>
-                        <span class="module-tag">cozy_box()</span>
+                        <span class="module-tag">spinner()</span>
                     </div>
                 </a>
             </div>
@@ -531,12 +545,96 @@ fx.<span class="fn">corrupt</span>(<span class="str">"hi"</span>,    mode=<span 
     </div>
 </section>
 
+<!-- ───────── CUSTOMIZATIONS MODULE ───────── -->
+<section class="module-section" id="customizations">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-5 reveal">
+                <div class="module-marker"><i class="bi bi-palette"></i> Module 04 / Customizations · new in 0.3.8</div>
+                <h2><span class="accent" style="font-style:italic;">Customizations</span></h2>
+                <p class="lead-text">
+                    A subclass of <code>TextStudio</code> that adds ANSI escape codes for
+                    color, background, and text styling. Pass any number of style names to
+                    <code>customize()</code> and they stack into one combined effect — bold red on
+                    yellow background, italic underlined cyan, blinking magenta, whatever
+                    your terminal can render.
+                </p>
+
+                <div class="method-block">
+                    <div class="method-name"><span class="ret">Customizations()</span></div>
+                    <p class="method-desc">Inherits everything from <code>TextStudio</code> — every text method (<code>to_morse</code>, <code>caesar</code>, <code>corrupt</code>, etc.) is still available on the same instance.</p>
+                </div>
+                <div class="method-block">
+                    <div class="method-name">customize<span class="args">(text, *styles)</span> <span class="ret">→ str</span></div>
+                    <p class="method-desc">Wraps <code>text</code> with one or more ANSI styles, then appends a reset. Unknown style names are silently skipped. Style names are case-insensitive and spaces in names are normalized to underscores (so <code>"bold italic"</code> works as well as <code>"BOLD_ITALIC"</code>).</p>
+                </div>
+
+                <h5 class="mt-4 mb-3" style="font-family:'Fraunces',serif;">Available styles</h5>
+
+                <div class="method-block">
+                    <div class="method-name" style="color:var(--rose);">Foreground colors</div>
+                    <p class="method-desc"><code>red</code>, <code>green</code>, <code>blue</code>, <code>yellow</code>, <code>cyan</code>, <code>black</code>, <code>magenta</code>, <code>white</code>, plus a <code>gray</code> variant.</p>
+                </div>
+                <div class="method-block">
+                    <div class="method-name" style="color:var(--honey);">Background colors</div>
+                    <p class="method-desc">Same eight colors with a <code>_bg</code> suffix — e.g. <code>red_bg</code>, <code>cyan_bg</code>, <code>white_bg</code>.</p>
+                </div>
+                <div class="method-block">
+                    <div class="method-name" style="color:var(--teal);">Bright variants</div>
+                    <p class="method-desc">Brighter, bolder takes on each color — append <code>_bright</code>: <code>red_bright</code>, <code>blue_bright</code>, <code>green_bright</code>, and so on.</p>
+                </div>
+                <div class="method-block">
+                    <div class="method-name" style="color:var(--plum);">Text effects</div>
+                    <p class="method-desc"><code>bold</code>, <code>dim</code>, <code>italic</code>, <code>underline</code>, <code>blink</code>, <code>reverse</code>, <code>hidden</code> — plus pre-mixed combos like <code>bold_italic</code>, <code>bold_underline</code>, <code>italic_underline</code>, <code>bold_italic_underline</code>, <code>bold_blink</code>, <code>italic_blink</code>, <code>bold_reverse</code>, and <code>bold_italic_blink</code>.</p>
+                </div>
+                <div class="method-block">
+                    <div class="method-name"><i class="bi bi-info-circle"></i> Heads up</div>
+                    <p class="method-desc">ANSI codes only render in terminals that support them. On Windows, modern PowerShell and Windows Terminal handle them natively; older <code>cmd.exe</code> may not.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-7 reveal">
+                <div class="code-card" style="position:sticky; top: 100px;">
+                    <div class="code-head">
+                        <span><i class="bi bi-palette"></i> customizations_example.py</span>
+                        <span class="lang">python</span>
+                    </div>
+<pre class="code-body"><span class="kw">from</span> cozy_kit <span class="kw">import</span> Customizations
+
+c = Customizations()
+
+<span class="com"># A single style</span>
+<span class="kw">print</span>(c.<span class="fn">customize</span>(<span class="str">"warning!"</span>, <span class="str">"red"</span>))
+
+<span class="com"># Stack multiple styles — they all combine</span>
+<span class="kw">print</span>(c.<span class="fn">customize</span>(<span class="str">"important"</span>, <span class="str">"bold"</span>, <span class="str">"yellow"</span>))
+<span class="kw">print</span>(c.<span class="fn">customize</span>(<span class="str">"clickable"</span>, <span class="str">"underline"</span>, <span class="str">"cyan"</span>))
+<span class="kw">print</span>(c.<span class="fn">customize</span>(<span class="str">"alert"</span>, <span class="str">"white"</span>, <span class="str">"red_bg"</span>, <span class="str">"bold"</span>))
+
+<span class="com"># Pre-mixed combos work too</span>
+<span class="kw">print</span>(c.<span class="fn">customize</span>(<span class="str">"emphatic"</span>, <span class="str">"bold_italic_underline"</span>))
+
+<span class="com"># Case-insensitive, spaces become underscores</span>
+<span class="kw">print</span>(c.<span class="fn">customize</span>(<span class="str">"hey"</span>, <span class="str">"Bold Italic"</span>))
+
+<span class="com"># Inherits everything from TextStudio</span>
+<span class="kw">print</span>(c.<span class="fn">to_morse</span>(<span class="str">"sos"</span>))      <span class="com"># ... --- ...</span>
+<span class="kw">print</span>(c.<span class="fn">customize</span>(
+    c.<span class="fn">to_morse</span>(<span class="str">"sos"</span>),
+    <span class="str">"red_bright"</span>, <span class="str">"bold"</span>,
+))  <span class="com"># bright red, bold morse</span></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- ───────── COZYUI MODULE ───────── -->
 <section class="module-section" id="ui">
     <div class="container">
         <div class="row g-5">
             <div class="col-lg-5 reveal">
-                <div class="module-marker"><i class="bi bi-bounding-box"></i> Module 04 / CozyUI</div>
+                <div class="module-marker"><i class="bi bi-bounding-box"></i> Module 05 / CozyUI</div>
                 <h2><span class="accent" style="font-style:italic;">CozyUI</span></h2>
                 <p class="lead-text">
                     Pretty box-drawing for terminals. Every helper returns a plain string —
@@ -563,6 +661,15 @@ fx.<span class="fn">corrupt</span>(<span class="str">"hi"</span>,    mode=<span 
                 <div class="method-block">
                     <div class="method-name">cozy_box<span class="args">(text)</span> <span class="ret">→ str</span></div>
                     <p class="method-desc">A single-line message wrapped in a tidy double-line box.</p>
+                </div>
+                <div class="method-block">
+                    <div class="method-name">spinner<span class="args">(loadtime, load_type, style)</span></div>
+                    <p class="method-desc">A live terminal spinner that animates for the given duration, then clears itself.
+                    <code>load_type</code> is one of <code>"sec"</code>, <code>"min"</code>, or <code>"hour"</code>.
+                    <code>style</code> picks the frames:
+                    <code style="color:var(--honey);">"line"</code> (<code>| / - \</code>),
+                    <code style="color:var(--teal);">"dots"</code> (<code>. .. ... ....</code>),
+                    or <code style="color:var(--plum);">"arrows"</code> (rotating cardinal arrows).</p>
                 </div>
             </div>
 
@@ -601,7 +708,11 @@ ui = CozyUI()
 <span class="kw">print</span>(ui.<span class="fn">cozy_box</span>(<span class="str">"all done!"</span>))
 <span class="out">╔═══════════╗
 ║ all done! ║
-╚═══════════╝</span></pre>
+╚═══════════╝</span>
+
+<span class="com"># Live spinner — runs for 3 seconds, then clears</span>
+ui.<span class="fn">spinner</span>(loadtime=<span class="num">3</span>, load_type=<span class="str">"sec"</span>, style=<span class="str">"dots"</span>)
+<span class="com"># . .. ... .... (animated)</span></pre>
                 </div>
             </div>
         </div>
@@ -613,7 +724,7 @@ ui = CozyUI()
     <div class="container">
         <div class="row g-5 align-items-center">
             <div class="col-lg-5 reveal">
-                <div class="module-marker"><i class="bi bi-info-circle"></i> Module 05 / Details</div>
+                <div class="module-marker"><i class="bi bi-info-circle"></i> Module 06 / Details</div>
                 <h2><span class="accent" style="font-style:italic;">Details</span></h2>
                 <p class="lead-text">
                     A tiny class that hands you back package metadata as a ready-to-print
@@ -746,6 +857,7 @@ t = Timer()
                 <a href="#greeting">Greeting</a>
                 <a href="#timer">Timer</a>
                 <a href="#text">TextStudio</a>
+                <a href="#customizations">Customizations</a>
                 <a href="#ui">CozyUI</a>
                 <a href="#details">Details</a>
             </div>
