@@ -103,12 +103,11 @@ greet = Greeting(name=<span class="str">"Youssef"</span>, nickname=<span class="
 ui    = CozyUI()
 
 <span class="kw">print</span>(ui.<span class="fn">cozy_title</span>(<span class="str">"hello, world"</span>))
-<span class="kw">print</span>(greet.<span class="fn">auto_greet</span>())
-
 <span class="com"># ═══════════════ hello, world ═══════════════</span>
+
+<span class="kw">print</span>(greet.<span class="fn">auto_greet</span>())
 <span class="com"># Good Morning Youssef!</span>
 <span class="com"># Or good morning Yo!</span>
-<span class="com">#</span>
 <span class="com"># Rise &amp; Shine</span>
 <span class="com"># Every morning is a fresh start...</span></pre>
                 </div>
@@ -124,7 +123,7 @@ ui    = CozyUI()
             <span class="section-eyebrow">// Six small modules</span>
             <h2 class="section-title">Everything you need, <span class="accent">nothing you don't.</span></h2>
             <p class="section-lead mx-auto">
-                Six focused modules. Friendly APIs. Helpful errors. Zero ceremony.
+                Six focused modules. Friendly APIs. Thoughtful defaults. Zero ceremony.
             </p>
         </div>
 
@@ -176,7 +175,7 @@ ui    = CozyUI()
                     <div class="module-tags">
                         <span class="module-tag">customize()</span>
                         <span class="module-tag">ANSI</span>
-                        <span class="module-tag">new in 0.3.8</span>
+                        <span class="module-tag">colors &amp; styles</span>
                     </div>
                 </a>
             </div>
@@ -205,19 +204,6 @@ ui    = CozyUI()
                 </a>
             </div>
 
-            <div class="col-md-6 col-lg-4">
-                <a href="#errors" class="module-card">
-                    <div class="module-icon" style="background:rgba(255,107,107,0.1); color:#ff9b94; border-color:rgba(255,107,107,0.3);">
-                        <i class="bi bi-shield-exclamation"></i>
-                    </div>
-                    <h3>Errors</h3>
-                    <p>Named exceptions for every failure mode — so when something goes wrong, the traceback actually tells you what happened.</p>
-                    <div class="module-tags">
-                        <span class="module-tag">CozyKitError</span>
-                        <span class="module-tag">+13 more</span>
-                    </div>
-                </a>
-            </div>
         </div>
     </div>
 </section>
@@ -251,6 +237,8 @@ greet = Greeting(name=<span class="str">"Youssef"</span>, nickname=<span class="
 timer = Timer()
 timer.<span class="fn">pomodoro</span>(work_time=<span class="num">25</span>, break_time=<span class="num">5</span>,
                 long_break_time=<span class="num">15</span>, show=<span class="kw">print</span>)
+<span class="com"># 💻 Work Time  →  ☕ Short Break Time  →  💻 Work Time ...</span>
+<span class="com"># (cycles work and breaks, sends desktop notifications)</span>
 
 
 <span class="com"># Text tricks</span>
@@ -260,7 +248,10 @@ fx = TextStudio()
 
 <span class="com"># Terminal UI helpers</span>
 ui = CozyUI()
-<span class="kw">print</span>(ui.<span class="fn">cozy_box</span>(<span class="str">"done!"</span>))</pre>
+<span class="kw">print</span>(ui.<span class="fn">cozy_box</span>(<span class="str">"done!"</span>))
+<span class="com"># ╔═══════╗</span>
+<span class="com"># ║ done! ║</span>
+<span class="com"># ╚═══════╝</span></pre>
                 </div>
             </div>
         </div>
@@ -318,7 +309,7 @@ ui = CozyUI()
                 </div>
                 <div class="method-block">
                     <div class="method-name">add_bedtime_story<span class="args">(title, content)</span></div>
-                    <p class="method-desc">Adds a new bedtime story to the JSON database. Raises <code>InvalidStoryError</code> on empty input.</p>
+                    <p class="method-desc">Adds a new bedtime story to the JSON database. Title and content must both be non-empty.</p>
                 </div>
                 <div class="method-block">
                     <div class="method-name">add_motivation<span class="args">(name, content)</span> · add_fun_fact<span class="args">(name, content)</span></div>
@@ -365,10 +356,12 @@ g.<span class="fn">add_bedtime_story</span>(
     title=<span class="str">"The Sleepy Robot"</span>,
     content=<span class="str">"Once upon a circuit board..."</span>,
 )
+<span class="com"># (silently saved to bedtime_stories.json)</span>
 
 <span class="com"># Goodbye with a destination</span>
 <span class="kw">print</span>(g.<span class="fn">bye</span>(destination=<span class="str">"the gym"</span>))
-<span class="com"># Bye Youssef! Have a nice day at the gym!</span></pre>
+<span class="com"># Bye Youssef! Have a nice day at the gym!</span>
+<span class="com"># Or bye Yo!</span></pre>
                 </div>
             </div>
         </div>
@@ -398,7 +391,7 @@ g.<span class="fn">add_bedtime_story</span>(
                 </div>
                 <div class="method-block">
                     <div class="method-name">pause_pomodoro<span class="args">()</span> · resume_pomodoro<span class="args">()</span> · stop_pomodoro<span class="args">()</span></div>
-                    <p class="method-desc">Control a running Pomodoro from another thread. Each raises a specific error if called in the wrong state.</p>
+                    <p class="method-desc">Control a running Pomodoro from another thread. Each must be called in the right order — start before pausing, pause before resuming.</p>
                 </div>
                 <div class="method-block">
                     <div class="method-name">wait<span class="args">(count, time_type)</span></div>
@@ -436,6 +429,10 @@ t.<span class="fn">pomodoro</span>(
     long_break_time=<span class="num">15</span>,
     show=<span class="kw">print</span>,
 )
+<span class="com"># 💻 Work Time</span>
+<span class="com"># 24:59  24:58 ...  00:00</span>
+<span class="com"># ☕ Short Break Time</span>
+<span class="com"># 04:59  04:58 ...  ⏰ Long Break Time</span>
 
 <span class="com"># Stopwatch</span>
 t.<span class="fn">start_stopwatch</span>()
@@ -448,7 +445,8 @@ elapsed = t.<span class="fn">end_stopwatch</span>()
 <span class="kw">print</span>(t.<span class="fn">get_time</span>())   <span class="com"># 14:32:08</span>
 
 <span class="com"># Friendly sleep</span>
-t.<span class="fn">wait</span>(count=<span class="num">2</span>, time_type=<span class="str">"sec"</span>)</pre>
+t.<span class="fn">wait</span>(count=<span class="num">2</span>, time_type=<span class="str">"sec"</span>)
+<span class="com"># (blocks execution for 2 seconds)</span></pre>
                 </div>
             </div>
         </div>
@@ -464,8 +462,7 @@ t.<span class="fn">wait</span>(count=<span class="num">2</span>, time_type=<span
                 <h2><span class="accent" style="font-style:italic;">TextStudio</span></h2>
                 <p class="lead-text">
                     A grab-bag of text utilities — the kind you reach for half-way through
-                    every script. Every method validates non-empty input and raises a clean
-                    <code>EmptyTextError</code> if you forget.
+                    every script. Every method expects a non-empty string.
                 </p>
 
                 <div class="method-block">
@@ -482,7 +479,7 @@ t.<span class="fn">wait</span>(count=<span class="num">2</span>, time_type=<span
                 </div>
                 <div class="method-block">
                     <div class="method-name">caesar<span class="args">(text, shift)</span> <span class="ret">→ str</span></div>
-                    <p class="method-desc">A Caesar cipher with full negative-shift support. Non-alphabetic characters pass through untouched. Raises <code>InvalidShiftError</code> if <code>shift</code> isn't an int.</p>
+                    <p class="method-desc">A Caesar cipher with full negative-shift support. Non-alphabetic characters pass through untouched. <code>shift</code> must be an integer.</p>
                 </div>
                 <div class="method-block">
                     <div class="method-name">reverse<span class="args">(text)</span> · word_count<span class="args">(text)</span> · char_count<span class="args">(text)</span> · count_vowels<span class="args">(text)</span></div>
@@ -550,20 +547,15 @@ fx.<span class="fn">corrupt</span>(<span class="str">"hi"</span>,    mode=<span 
     <div class="container">
         <div class="row g-5">
             <div class="col-lg-5 reveal">
-                <div class="module-marker"><i class="bi bi-palette"></i> Module 04 / Customizations · new in 0.3.8</div>
+                <div class="module-marker"><i class="bi bi-palette"></i> Module 04 / Customizations</div>
                 <h2><span class="accent" style="font-style:italic;">Customizations</span></h2>
                 <p class="lead-text">
-                    A subclass of <code>TextStudio</code> that adds ANSI escape codes for
-                    color, background, and text styling. Pass any number of style names to
-                    <code>customize()</code> and they stack into one combined effect — bold red on
-                    yellow background, italic underlined cyan, blinking magenta, whatever
-                    your terminal can render.
+                    Adds ANSI escape codes for color, background, and text styling to any
+                    string. Pass any number of style names to <code>customize()</code> and they
+                    stack into one combined effect — bold red on yellow background, italic
+                    underlined cyan, blinking magenta, whatever your terminal can render.
                 </p>
 
-                <div class="method-block">
-                    <div class="method-name"><span class="ret">Customizations()</span></div>
-                    <p class="method-desc">Inherits everything from <code>TextStudio</code> — every text method (<code>to_morse</code>, <code>caesar</code>, <code>corrupt</code>, etc.) is still available on the same instance.</p>
-                </div>
                 <div class="method-block">
                     <div class="method-name">customize<span class="args">(text, *styles)</span> <span class="ret">→ str</span></div>
                     <p class="method-desc">Wraps <code>text</code> with one or more ANSI styles, then appends a reset. Unknown style names are silently skipped. Style names are case-insensitive and spaces in names are normalized to underscores (so <code>"bold italic"</code> works as well as <code>"BOLD_ITALIC"</code>).</p>
@@ -605,24 +597,29 @@ c = Customizations()
 
 <span class="com"># A single style</span>
 <span class="kw">print</span>(c.<span class="fn">customize</span>(<span class="str">"warning!"</span>, <span class="str">"red"</span>))
+<span class="com"># → "warning!" in red</span>
 
 <span class="com"># Stack multiple styles — they all combine</span>
 <span class="kw">print</span>(c.<span class="fn">customize</span>(<span class="str">"important"</span>, <span class="str">"bold"</span>, <span class="str">"yellow"</span>))
+<span class="com"># → bold yellow "important"</span>
+
 <span class="kw">print</span>(c.<span class="fn">customize</span>(<span class="str">"clickable"</span>, <span class="str">"underline"</span>, <span class="str">"cyan"</span>))
+<span class="com"># → cyan underlined "clickable"</span>
+
 <span class="kw">print</span>(c.<span class="fn">customize</span>(<span class="str">"alert"</span>, <span class="str">"white"</span>, <span class="str">"red_bg"</span>, <span class="str">"bold"</span>))
+<span class="com"># → bold white "alert" on red background</span>
 
 <span class="com"># Pre-mixed combos work too</span>
 <span class="kw">print</span>(c.<span class="fn">customize</span>(<span class="str">"emphatic"</span>, <span class="str">"bold_italic_underline"</span>))
+<span class="com"># → bold italic underlined "emphatic"</span>
 
 <span class="com"># Case-insensitive, spaces become underscores</span>
 <span class="kw">print</span>(c.<span class="fn">customize</span>(<span class="str">"hey"</span>, <span class="str">"Bold Italic"</span>))
+<span class="com"># → bold italic "hey"</span>
 
-<span class="com"># Inherits everything from TextStudio</span>
-<span class="kw">print</span>(c.<span class="fn">to_morse</span>(<span class="str">"sos"</span>))      <span class="com"># ... --- ...</span>
-<span class="kw">print</span>(c.<span class="fn">customize</span>(
-    c.<span class="fn">to_morse</span>(<span class="str">"sos"</span>),
-    <span class="str">"red_bright"</span>, <span class="str">"bold"</span>,
-))  <span class="com"># bright red, bold morse</span></pre>
+<span class="com"># Bright variants pop a bit more</span>
+<span class="kw">print</span>(c.<span class="fn">customize</span>(<span class="str">"shiny"</span>, <span class="str">"green_bright"</span>, <span class="str">"bold"</span>))
+<span class="com"># → bold bright-green "shiny"</span></pre>
                 </div>
             </div>
         </div>
@@ -768,74 +765,6 @@ d = Details()
     </div>
 </section>
 
-<!-- ───────── ERRORS ───────── -->
-<section class="module-section" id="errors">
-    <div class="container">
-        <div class="row g-5">
-            <div class="col-lg-5 reveal">
-                <div class="module-marker"><i class="bi bi-shield-exclamation"></i> Errors</div>
-                <h2>Named errors, <span class="accent" style="font-style:italic;">honest tracebacks.</span></h2>
-                <p class="lead-text">
-                    Every failure mode gets its own exception class, all inheriting from
-                    <code>CozyKitError</code>. Catch the base class to handle anything
-                    cozy-kit might raise, or narrow it down for surgical handling.
-                </p>
-
-                <div class="code-card mt-4">
-                    <div class="code-head">
-                        <span><i class="bi bi-shield-exclamation"></i> error_handling.py</span>
-                        <span class="lang">python</span>
-                    </div>
-<pre class="code-body"><span class="kw">from</span> cozy_kit <span class="kw">import</span> errors, Timer
-
-t = Timer()
-
-<span class="kw">try</span>:
-    t.<span class="fn">end_stopwatch</span>()       <span class="com"># never called start_stopwatch()</span>
-<span class="kw">except</span> errors.<span class="fn">StopWatchNotStartedError</span> <span class="kw">as</span> e:
-    <span class="kw">print</span>(<span class="fn">f</span><span class="str">"Oops: {e}"</span>)
-
-<span class="kw">try</span>:
-    t.<span class="fn">countdown</span>(count=<span class="num">5</span>, time_type=<span class="str">"decade"</span>, show=<span class="kw">print</span>)
-<span class="kw">except</span> errors.<span class="fn">InvalidTimeTypeError</span> <span class="kw">as</span> e:
-    <span class="kw">print</span>(<span class="fn">f</span><span class="str">"Use sec / min / hour: {e}"</span>)</pre>
-                </div>
-            </div>
-
-            <div class="col-lg-7 reveal">
-                <h5 class="mb-3" style="font-family:'Fraunces',serif;">Exception hierarchy</h5>
-                <div class="d-flex flex-wrap">
-                    <span class="error-pill"><i class="bi bi-shield"></i> CozyKitError</span>
-                    <span class="error-pill"><i class="bi bi-x-circle"></i> EmptyTextError</span>
-                    <span class="error-pill"><i class="bi bi-clock-history"></i> InvalidTimeTypeError</span>
-                    <span class="error-pill"><i class="bi bi-clock-history"></i> InvalidTimeAmountError</span>
-                    <span class="error-pill"><i class="bi bi-arrows-move"></i> InvalidShiftError</span>
-                    <span class="error-pill"><i class="bi bi-book"></i> InvalidStoryError</span>
-                    <span class="error-pill"><i class="bi bi-stopwatch"></i> StopWatchNotStartedError</span>
-                    <span class="error-pill"><i class="bi bi-database-x"></i> DatabaseNotFoundError</span>
-                    <span class="error-pill"><i class="bi bi-cup-hot"></i> PomodoroNotStartedError</span>
-                    <span class="error-pill"><i class="bi bi-pause-circle"></i> PomodoroNotPausedError</span>
-                    <span class="error-pill"><i class="bi bi-chat-quote"></i> InvalidMotivationNameError</span>
-                    <span class="error-pill"><i class="bi bi-chat-quote"></i> InvalidMotivationContentError</span>
-                    <span class="error-pill"><i class="bi bi-lightbulb"></i> InvalidFunFactError</span>
-                    <span class="error-pill"><i class="bi bi-hourglass-split"></i> TimerAlreadyRunningError</span>
-                </div>
-
-                <div class="mt-5 p-4" style="background:rgba(255,182,117,0.05); border:1px solid var(--border-warm); border-radius:14px;">
-                    <h5 class="mb-2" style="font-family:'Fraunces',serif; color:var(--amber);">
-                        <i class="bi bi-info-circle me-2"></i>Heads up
-                    </h5>
-                    <p class="mb-0" style="color:var(--text-soft); font-size:0.94rem; line-height:1.7;">
-                        Always catch <code>CozyKitError</code> if you want a single safety net
-                        around any cozy-kit call. Every specific error inherits from it, so
-                        nothing slips through.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
 </main>
 
 <!-- ───────── FOOTER ───────── -->
@@ -864,7 +793,6 @@ t = Timer()
             <div class="col-6 col-md-2">
                 <h5>Resources</h5>
                 <a href="#quickstart">Quick start</a>
-                <a href="#errors">Errors</a>
                 <a href="https://pypi.org/project/cozy-kit/" target="_blank" rel="noopener">PyPI</a>
                 <a href="https://github.com/youssefahmed2017/cozy-kit" target="_blank" rel="noopener">GitHub</a>
             </div>
