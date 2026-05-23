@@ -30,6 +30,14 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => observer.observe(el));
 
+// Hide navbar when footer bottom is visible
+const bottomEl = document.getElementById('bottom');
+if (bottomEl) {
+    new IntersectionObserver(entries => {
+        nav.classList.toggle('nav-hidden', entries[0].isIntersecting);
+    }).observe(bottomEl);
+}
+
 // Close mobile nav on link click
 document.querySelectorAll('#nav .nav-link').forEach(link => {
     link.addEventListener('click', () => {
