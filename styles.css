@@ -103,6 +103,12 @@ h1, h2, h3, h4, .display-font {
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
 }
 
+.navbar.nav-hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-100%);
+}
+
 .navbar-brand {
     font-family: 'Fraunces', serif;
     font-weight: 700;
