@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
+<html lang="en" data-bs-theme="dark" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,7 +26,7 @@
             </button>
             <a class="navbar-brand" href="#intro">
                 <span class="brand-mark">CD</span>
-                cozy-kit Documentations
+                cozy-kit Documentation
             </a>
         </div>
         <div class="navbar-right">
@@ -39,6 +39,9 @@
                 <i class="bi bi-box-seam"></i>
                 <span class="d-none d-sm-inline">PyPI</span>
             </a>
+            <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle light/dark theme" title="Toggle theme">
+                <i class="bi bi-moon-stars-fill" id="themeIcon"></i>
+            </button>
         </div>
     </div>
 </nav>
@@ -155,14 +158,11 @@
                         <span>v1.0.0 · MIT License · Python 3.8+</span>
                     </div>
                     <h1>
-                        A warm little <br>
-                        Python toolkit, <br>
-                        <span class="accent">made cozy.</span>
+                        Documentation for
+                        <span class="accent">cozy-kit.</span>
                     </h1>
                     <p class="hero-sub">
-                        Greetings that know the time of day. Pomodoro timers that don't shout.
-                        Text utilities, terminal UI helpers, and a few bedtime stories — all
-                        bundled into one quiet, friendly package.
+                        Reference guides, examples, and API documentation for cozy-kit.
                     </p>
                     <div class="install-card mb-3">
                         <span class="prompt">$</span>
@@ -757,7 +757,7 @@ t.<span class="fn">wait</span>(count=<span class="num">2</span>, time_type=<span
                     <h4 class="method-group-title">Analysis &amp; Cleanup</h4>
                     <div class="method-block">
                         <div class="method-name">word_count<span class="args">(text)</span> · char_count<span class="args">(text)</span> · count_vowels<span class="args">(text)</span> <span class="ret">→ int</span></div>
-                        <p class="method-desc">Word count (whitespace-delimited), total character count, and vowel count (a e i o u, case-insensitive).<10/p>
+                        <p class="method-desc">Word count (whitespace-delimited), total character count, and vowel count (a e i o u, case-insensitive).</p>
                     </div>
                     <div class="method-block">
                         <div class="method-name">reverse<span class="args">(text)</span> <span class="ret">→ str</span></div>
@@ -1409,7 +1409,7 @@ settings.notice_if_on_older_update = <span class="kw">False</span></pre>
             <div class="col-md-5">
                 <a class="navbar-brand" href="#intro">
                 <span class="brand-mark">CD</span>
-                cozy-kit Documentations
+                cozy-kit Documentation
             </a>
                 <p style="color:var(--text-muted);font-size:.95rem;line-height:1.7;max-width:400px;">
                     A cozy Python package with greetings, timers, and text utilities.
