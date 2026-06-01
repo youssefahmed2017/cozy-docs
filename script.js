@@ -86,40 +86,54 @@ document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => revealObserv
 
 // ── Active sidebar link tracking ──
 const sectionIds = [
-    'intro','installation','quickstart','key-concepts',
+    'intro','modules','installation','quickstart','key-concepts',
     'greeting','timer','text-editor','text-customizations','cozy-ui','details',
-    'cli','settings','exceptions',
-    'examples','faq'
+    'cli','settings','examples','faq'
 ];
 
 const sidebarLinks = {};
+
 sectionIds.forEach(id => {
-    const link = document.querySelector(`.nav-link-item[data-section="${id}"]`);
-    if (link) sidebarLinks[id] = link;
+    const link = document.querySelector(
+        `.nav-link-item[data-section="${id}"]`
+    );
+
+    if (link) {
+        sidebarLinks[id] = link;
+    }
 });
 
-let currentActive = null;
+function updateActiveSection() {
+    let bestSection = null;
+    let bestDistance = Infinity;
 
-const sectionObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        const id = entry.target.id;
-        const link = sidebarLinks[id];
-        if (!link) return;
+    sectionIds.forEach(id => {
+        const el = document.getElementById(id);
 
-        if (entry.isIntersecting) {
-            if (currentActive && currentActive !== link) {
-                currentActive.classList.remove('active');
-            }
-            link.classList.add('active');
-            currentActive = link;
+        if (!el) return;
+
+        const rect = el.getBoundingClientRect();
+
+        // Ignore sections completely below the viewport
+        if (rect.top > window.innerHeight) return;
+
+        const distance = Math.abs(rect.top);
+
+        if (distance < bestDistance) {
+            bestDistance = distance;
+            bestSection = id;
         }
     });
-}, {
-    rootMargin: '-10% 0px -75% 0px',
-    threshold: 0
-});
 
-sectionIds.forEach(id => {
-    const el = document.getElementById(id);
-    if (el) sectionObserver.observe(el);
-});
+    document.querySelectorAll('.nav-link-item.active')
+        .forEach(link => link.classList.remove('active'));
+
+    if (bestSection && sidebarLinks[bestSection]) {
+        sidebarLinks[bestSection].classList.add('active');
+    }
+}
+
+window.addEventListener('scroll', updateActiveSection);
+window.addEventListener('load', updateActiveSection);
+
+updateActiveSection();
