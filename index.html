@@ -33,8 +33,9 @@
             <span class="version-tag">v1.0.0</span>
             <a class="nav-icon-btn" href="https://github.com/youssefahmed2017/cozy-kit/" target="_blank" rel="noopener" title="GitHub">
                 <i class="bi bi-github"></i>
+                <span>GitHub</span>
             </a>
-            <a class="nav-icon-btn nav-pypi-btn" href="https://pypi.org/project/cozy-kit/" target="_blank" rel="noopener" title="PyPI">
+            <a class="nav-icon-btn" href="https://pypi.org/project/cozy-kit/" target="_blank" rel="noopener" title="PyPI">
                 <i class="bi bi-box-seam"></i>
                 <span class="d-none d-sm-inline">PyPI</span>
             </a>
@@ -108,7 +109,6 @@
                     <a href="#settings" class="nav-link-item" data-section="settings">
                         <i class="bi bi-gear"></i> Settings
                     </a>
-                    <a href="#exceptions" class="nav-link-item" data-section="exceptions">
                         <i class="bi bi-exclamation-triangle"></i> Exceptions
                     </a>
                 </div>
@@ -426,8 +426,6 @@ ui = CozyUI()
                     <div class="concept-card">
                         <div class="concept-icon"><i class="bi bi-shield-exclamation"></i></div>
                         <h4>Custom Exceptions</h4>
-                        <p>cozy-kit raises typed exceptions (all subclasses of <code>CozyKitError</code>) rather than generic built-ins. Catch specific types for precise error handling.</p>
-                        <div class="concept-example"><code>from cozy_kit.errors import InvalidTimeTypeError</code></div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
@@ -763,7 +761,7 @@ t.<span class="fn">wait</span>(count=<span class="num">2</span>, time_type=<span
                     <h4 class="method-group-title">Analysis &amp; Cleanup</h4>
                     <div class="method-block">
                         <div class="method-name">word_count<span class="args">(text)</span> · char_count<span class="args">(text)</span> · count_vowels<span class="args">(text)</span> <span class="ret">→ int</span></div>
-                        <p class="method-desc">Word count (whitespace-delimited), total character count, and vowel count (a e i o u, case-insensitive).</p>
+                        <p class="method-desc">Word count (whitespace-delimited), total character count, and vowel count (a e i o u, case-insensitive).<10/p>
                     </div>
                     <div class="method-block">
                         <div class="method-name">reverse<span class="args">(text)</span> <span class="ret">→ str</span></div>
@@ -1230,136 +1228,6 @@ g = Greeting(name=<span class="str">"Youssef"</span>)
         </div>
     </section>
 
-    <!-- ── EXCEPTIONS ── -->
-    <section class="doc-section" id="exceptions">
-        <div class="container">
-            <div class="reveal mb-4">
-                <div class="module-marker"><i class="bi bi-exclamation-triangle"></i> Error handling</div>
-                <h2><span class="accent" style="font-style:italic;">Exceptions</span></h2>
-                <p class="lead-text" style="max-width:640px;">
-                    All cozy-kit exceptions extend <code>CozyKitError</code>. Catch the whole family
-                    or specific types. Import from <code>cozy_kit.errors</code>.
-                </p>
-                <div class="import-snippet">
-                    <code><span class="kw">from</span> cozy_kit.errors <span class="kw">import</span> CozyKitError, InvalidTimeTypeError</code>
-                </div>
-            </div>
-            <div class="reveal">
-                <div class="exceptions-table">
-                    <div class="exc-row exc-header">
-                        <div class="exc-name">Exception</div>
-                        <div class="exc-module">Raised by</div>
-                        <div class="exc-desc">When</div>
-                    </div>
-                    <div class="exc-row">
-                        <div class="exc-name"><code>CozyKitError</code></div>
-                        <div class="exc-module exc-all">base class</div>
-                        <div class="exc-desc">Parent of all cozy-kit exceptions. Catch this to handle any library error.</div>
-                    </div>
-                    <div class="exc-row">
-                        <div class="exc-name"><code>InvalidTimeTypeError</code></div>
-                        <div class="exc-module exc-timer">Timer · CozyUI</div>
-                        <div class="exc-desc"><code>time_type</code> is not <code>"sec"</code>, <code>"min"</code>, or <code>"hour"</code>.</div>
-                    </div>
-                    <div class="exc-row">
-                        <div class="exc-name"><code>InvalidTimeAmountError</code></div>
-                        <div class="exc-module exc-timer">Timer · CozyUI</div>
-                        <div class="exc-desc"><code>count</code> is ≤ 0 or not a number.</div>
-                    </div>
-                    <div class="exc-row">
-                        <div class="exc-name"><code>InvalidShiftError</code></div>
-                        <div class="exc-module exc-text">TextEditor</div>
-                        <div class="exc-desc"><code>shift</code> passed to <code>caesar_cipher()</code> is not an integer.</div>
-                    </div>
-                    <div class="exc-row">
-                        <div class="exc-name"><code>InvalidStoryError</code></div>
-                        <div class="exc-module exc-greet">Greeting</div>
-                        <div class="exc-desc"><code>title</code> or <code>content</code> in <code>add_bedtime_story()</code> is empty.</div>
-                    </div>
-                    <div class="exc-row">
-                        <div class="exc-name"><code>InvalidMotivationNameError</code></div>
-                        <div class="exc-module exc-greet">Greeting</div>
-                        <div class="exc-desc"><code>name</code> in <code>add_motivation()</code> is empty.</div>
-                    </div>
-                    <div class="exc-row">
-                        <div class="exc-name"><code>InvalidMotivationContentError</code></div>
-                        <div class="exc-module exc-greet">Greeting</div>
-                        <div class="exc-desc"><code>content</code> in <code>add_motivation()</code> or <code>add_fun_fact()</code> is empty.</div>
-                    </div>
-                    <div class="exc-row">
-                        <div class="exc-name"><code>InvalidFunFactError</code></div>
-                        <div class="exc-module exc-greet">Greeting</div>
-                        <div class="exc-desc"><code>name</code> in <code>add_fun_fact()</code> is empty.</div>
-                    </div>
-                    <div class="exc-row">
-                        <div class="exc-name"><code>DatabaseNotFoundError</code></div>
-                        <div class="exc-module exc-greet">Greeting</div>
-                        <div class="exc-desc">A bundled JSON resource file is missing or inaccessible.</div>
-                    </div>
-                    <div class="exc-row">
-                        <div class="exc-name"><code>PomodoroNotStartedError</code></div>
-                        <div class="exc-module exc-timer">Timer</div>
-                        <div class="exc-desc">Pause/resume/stop called before <code>pomodoro()</code> was started.</div>
-                    </div>
-                    <div class="exc-row">
-                        <div class="exc-name"><code>PomodoroNotPausedError</code></div>
-                        <div class="exc-module exc-timer">Timer</div>
-                        <div class="exc-desc"><code>resume_pomodoro()</code> called when the timer is not paused.</div>
-                    </div>
-                    <div class="exc-row">
-                        <div class="exc-name"><code>StopWatchNotStartedError</code></div>
-                        <div class="exc-module exc-timer">Timer</div>
-                        <div class="exc-desc"><code>end_stopwatch()</code> called before <code>start_stopwatch()</code>.</div>
-                    </div>
-                    <div class="exc-row">
-                        <div class="exc-name"><code>TimerAlreadyRunningError</code></div>
-                        <div class="exc-module exc-timer">Timer</div>
-                        <div class="exc-desc">A timer is started when one is already running.</div>
-                    </div>
-                    <div class="exc-row">
-                        <div class="exc-name"><code>EmptyTextError</code></div>
-                        <div class="exc-module exc-text">TextEditor · TextCustomizations · CozyUI</div>
-                        <div class="exc-desc">An empty string is passed as the <code>text</code> argument.</div>
-                    </div>
-                    <div class="exc-row">
-                        <div class="exc-name"><code>InvalidStyleError</code></div>
-                        <div class="exc-module exc-custom">TextCustomizations</div>
-                        <div class="exc-desc">An unrecognized style name is passed to <code>customize()</code>.</div>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-4 reveal">
-                <div class="col-lg-8">
-                    <div class="code-card">
-                        <div class="code-head">
-                            <span><i class="bi bi-shield-check"></i> error_handling.py</span>
-                            <div class="code-head-right">
-                                <span class="lang">python</span>
-                                <button class="copy-btn-code" onclick="copyCode(this)" aria-label="Copy"><i class="bi bi-clipboard"></i></button>
-                            </div>
-                        </div>
-<pre class="code-body"><span class="kw">from</span> cozy_kit <span class="kw">import</span> Timer
-<span class="kw">from</span> cozy_kit.errors <span class="kw">import</span> CozyKitError, InvalidTimeTypeError
-
-t = Timer()
-
-<span class="com"># Catch a specific exception</span>
-<span class="kw">try</span>:
-    t.<span class="fn">countdown</span>(count=<span class="num">5</span>, time_type=<span class="str">"weeks"</span>, show=<span class="kw">print</span>)
-<span class="kw">except</span> InvalidTimeTypeError <span class="kw">as</span> e:
-    <span class="kw">print</span>(<span class="fn">f</span><span class="str">"Bad time type: {e}"</span>)
-
-<span class="com"># Or catch the entire family</span>
-<span class="kw">try</span>:
-    t.<span class="fn">pause_pomodoro</span>()
-<span class="kw">except</span> CozyKitError <span class="kw">as</span> e:
-    <span class="kw">print</span>(<span class="fn">f</span><span class="str">"cozy-kit error: {e}"</span>)</pre>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- ── CHAPTER: Guides ── -->
     <div class="docs-chapter-divider">
         <div class="chapter-label"><i class="bi bi-compass"></i> Guides</div>
@@ -1543,10 +1411,10 @@ settings.notice_if_on_older_update = <span class="kw">False</span></pre>
     <div class="container">
         <div class="row g-4">
             <div class="col-md-5">
-                <a class="navbar-brand mb-3 d-inline-flex" href="#intro">
-                    <span class="brand-mark">CD</span>
-                    cozy-kit Documentations
-                </a>
+                <a class="navbar-brand" href="#intro">
+                <span class="brand-mark">CD</span>
+                cozy-kit Documentations
+            </a>
                 <p style="color:var(--text-muted);font-size:.95rem;line-height:1.7;max-width:400px;">
                     A cozy Python package with greetings, timers, and text utilities.
                     Built by Youssef Ahmed. Released under the MIT License.
@@ -1567,7 +1435,6 @@ settings.notice_if_on_older_update = <span class="kw">False</span></pre>
                 <a href="#quickstart">Quick Start</a>
                 <a href="#cli">CLI</a>
                 <a href="#settings">Settings</a>
-                <a href="#exceptions">Exceptions</a>
                 <a href="#faq">FAQ</a>
             </div>
             <div class="col-6 col-md-2">
