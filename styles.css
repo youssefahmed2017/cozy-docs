@@ -893,3 +893,130 @@ footer a:hover { color: var(--amber); }
     .hero h1 { font-size: 2.2rem; }
     .faq-a { padding-left: 1.4rem; }
 }
+
+/* ─── THEME TOGGLE BUTTON ─── */
+.theme-toggle-btn {
+    background: rgba(255,182,117,.07);
+    border: 1px solid var(--border-soft);
+    color: var(--text-soft);
+    width: 36px; height: 36px;
+    border-radius: 9px;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 1rem; cursor: pointer;
+    transition: all .2s ease; flex-shrink: 0;
+}
+.theme-toggle-btn:hover {
+    color: var(--amber);
+    background: rgba(255,182,117,.12);
+    border-color: var(--border-warm);
+}
+
+/* ─── LIGHT THEME ─── */
+[data-theme="light"] {
+    --bg-deep:       #fdf6ef;
+    --bg-mid:        #f5ebe0;
+    --bg-soft:       #ede3d8;
+    --surface:       #e4d8cc;
+    --surface-elev:  rgba(0,0,0,.025);
+    --border-soft:   rgba(80,40,10,.10);
+    --border-warm:   rgba(120,60,20,.22);
+    --text-primary:  #2a1505;
+    --text-soft:     #5a3d28;
+    --text-muted:    #8a7060;
+    --amber:         #c06800;
+    --amber-deep:    #a05600;
+    --rose:          #c0306e;
+    --honey:         #9e7200;
+    --teal:          #1a7062;
+    --plum:          #7040c8;
+    --glow:          0 0 40px rgba(180,90,20,.12);
+    --glow-soft:     0 0 60px rgba(180,90,20,.06);
+}
+
+/* Body backgrounds */
+[data-theme="light"] body::before {
+    background: radial-gradient(circle, rgba(200,100,20,.10) 0%, transparent 70%);
+}
+[data-theme="light"] body::after {
+    background: radial-gradient(circle, rgba(150,100,200,.07) 0%, transparent 70%);
+}
+
+/* Grain overlay */
+[data-theme="light"] .grain-overlay {
+    opacity: .18;
+    mix-blend-mode: multiply;
+}
+
+/* Navbar */
+[data-theme="light"] .navbar {
+    background: rgba(253,246,239,.85);
+    border-bottom-color: rgba(80,40,10,.12);
+}
+[data-theme="light"] .navbar.scrolled {
+    background: rgba(253,246,239,.97);
+    box-shadow: 0 4px 30px rgba(80,40,10,.10);
+}
+
+/* Sidebar */
+[data-theme="light"] .docs-sidebar {
+    background: var(--bg-mid);
+    border-right-color: var(--border-soft);
+}
+[data-theme="light"] .sidebar-install {
+    background: rgba(0,0,0,.04);
+}
+
+/* Hero terminal — stays dark */
+[data-theme="light"] .hero-terminal {
+    background: rgba(20,12,35,.92);
+    border-color: rgba(80,40,10,.20);
+    box-shadow: 0 20px 60px rgba(80,40,10,.15), var(--glow-soft);
+}
+
+/* Code cards — always dark */
+[data-theme="light"] .code-card {
+    background: rgba(20,12,35,.92);
+    border-color: rgba(80,40,10,.22);
+    box-shadow: 0 10px 30px rgba(80,40,10,.12);
+}
+
+/* Import snippet */
+[data-theme="light"] .import-snippet {
+    background: rgba(228,216,204,.6);
+    border-color: rgba(80,40,10,.14);
+}
+
+/* Concept example */
+[data-theme="light"] .concept-example {
+    background: rgba(228,216,204,.7);
+}
+
+/* Install card */
+[data-theme="light"] .install-card {
+    background: rgba(228,216,204,.65);
+    border-color: rgba(120,60,20,.18);
+}
+
+/* Hero orbs */
+[data-theme="light"] .hero-orb { opacity: .18; }
+
+/* Module cards */
+[data-theme="light"] .module-card.custom .module-icon { color: #3a2010; }
+[data-theme="light"] .module-tag { background: rgba(0,0,0,.04); }
+
+/* Exceptions table */
+[data-theme="light"] .exceptions-table { background: rgba(228,216,204,.5); }
+
+/* FAQ items */
+[data-theme="light"] .faq-item { background: var(--bg-soft); }
+
+/* Scrollbar */
+[data-theme="light"] ::-webkit-scrollbar-track { background: var(--bg-deep); }
+[data-theme="light"] ::-webkit-scrollbar-thumb { background: var(--surface); }
+
+/* Smooth transitions on theme switch */
+body, .navbar, .docs-sidebar, .module-card, .concept-card, .code-card,
+.faq-item, footer, .hero-tag, .install-card, .section-eyebrow {
+    transition: background .35s ease, color .35s ease,
+                border-color .35s ease, box-shadow .35s ease;
+}
