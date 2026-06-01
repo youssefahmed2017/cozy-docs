@@ -64,6 +64,10 @@
                     <a href="#intro" class="nav-link-item" data-section="intro">
                         <i class="bi bi-house-door"></i> Overview
                     </a>
+                    <a href="#modules" class="nav-link-item" data-section="modules">
+                        <i class="bi bi-boxes"></i>
+                        Modules
+                    </a>
                 </div>
 
                 <div class="nav-section">
@@ -421,7 +425,6 @@ ui = CozyUI()
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
-                <div class="col-md-6 col-lg-4">
                     <div class="concept-card">
                         <div class="concept-icon"><i class="bi bi-database"></i></div>
                         <h4>Extensible Databases</h4>
@@ -708,8 +711,8 @@ t.<span class="fn">wait</span>(count=<span class="num">2</span>, time_type=<span
     </section>
 
     <!-- ── TEXTEDITOR ── -->
-    <section class="module-section" id="text-editor">
-        <div class="container">
+    <section class="module-section">
+        <div class="container" id="text-editor">
             <div class="module-header reveal">
                 <div class="module-marker"><i class="bi bi-type"></i> Module 03 / TextEditor</div>
                 <h2><span class="accent" style="font-style:italic;">TextEditor</span></h2>
@@ -800,33 +803,33 @@ t.<span class="fn">wait</span>(count=<span class="num">2</span>, time_type=<span
 fx = TextEditor()
 
 <span class="com"># Encoding</span>
-fx.<span class="fn">to_morse</span>(<span class="str">"hello world"</span>)
+<span class="kw">print</span>(fx.<span class="fn">to_morse</span>(<span class="str">"hello world"</span>))
 <span class="com"># .... . .-.. .-.. --- / .-- --- .-. .-.. -..</span>
 
-fx.<span class="fn">caesar_cipher</span>(<span class="str">"hello"</span>, shift=<span class="num">3</span>)   <span class="com"># khoor</span>
-fx.<span class="fn">caesar_cipher</span>(<span class="str">"khoor"</span>, shift=-<span class="num">3</span>)  <span class="com"># hello</span>
+<span class="kw">print</span>(fx.<span class="fn">caesar_cipher</span>(<span class="str">"hello"</span>, shift=<span class="num">3</span>))   <span class="com"># khoor</span>
+<span class="kw">print</span>(fx.<span class="fn">caesar_cipher</span>(<span class="str">"khoor"</span>, shift=-<span class="num">3</span>))  <span class="com"># hello</span>
 
 <span class="com"># Case &amp; format</span>
-fx.<span class="fn">snake_case</span>(<span class="str">"Cozy Kit Demo"</span>)   <span class="com"># cozy_kit_demo</span>
-fx.<span class="fn">kebab_case</span>(<span class="str">"Cozy Kit Demo"</span>)   <span class="com"># cozy-kit-demo</span>
-fx.<span class="fn">pascal_case</span>(<span class="str">"cozy kit demo"</span>)  <span class="com"># CozyKitDemo</span>
+<span class="kw">print</span>(fx.<span class="fn">snake_case</span>(<span class="str">"Cozy Kit Demo"</span>))   <span class="com"># cozy_kit_demo</span>
+<span class="kw">print</span>(fx.<span class="fn">kebab_case</span>(<span class="str">"Cozy Kit Demo"</span>))   <span class="com"># cozy-kit-demo</span>
+<span class="kw">print</span>(fx.<span class="fn">pascal_case</span>(<span class="str">"cozy kit demo"</span>))  <span class="com"># CozyKitDemo</span>
 
 <span class="com"># Analysis</span>
-fx.<span class="fn">word_count</span>(<span class="str">"hi there friend"</span>)   <span class="com"># 3</span>
-fx.<span class="fn">count_vowels</span>(<span class="str">"cozy kit"</span>)         <span class="com"># 2</span>
-fx.<span class="fn">char_count</span>(<span class="str">"hello"</span>)             <span class="com"># 5</span>
-fx.<span class="fn">reverse</span>(<span class="str">"warmth"</span>)               <span class="com"># htmraw</span>
+<span class="kw">print</span>(fx.<span class="fn">word_count</span>(<span class="str">"hi there friend"</span>))   <span class="com"># 3</span>
+<span class="kw">print</span>(fx.<span class="fn">count_vowels</span>(<span class="str">"cozy kit"</span>))         <span class="com"># 2</span>
+<span class="kw">print</span>(fx.<span class="fn">char_count</span>(<span class="str">"hello"</span>))             <span class="com"># 5</span>
+<span class="kw">print</span>(fx.<span class="fn">reverse</span>(<span class="str">"warmth"</span>))               <span class="com"># htmraw</span>
 
 <span class="com"># Cleanup</span>
-fx.<span class="fn">remove_spaces</span>(<span class="str">"cozy kit"</span>)        <span class="com"># cozykit</span>
-fx.<span class="fn">remove_punctuation</span>(<span class="str">"hey, yo!"</span>)   <span class="com"># hey yo</span>
-fx.<span class="fn">space_out_letters</span>(<span class="str">"hi"</span>)          <span class="com"># h i</span>
+<span class="kw">print</span>(fx.<span class="fn">remove_spaces</span>(<span class="str">"cozy kit"</span>))        <span class="com"># cozykit</span>
+<span class="kw">print</span>(fx.<span class="fn">remove_punctuation</span>(<span class="str">"hey, yo!"</span>))   <span class="com"># hey yo</span>
+<span class="kw">print</span>(fx.<span class="fn">space_out_letters</span>(<span class="str">"hi"</span>))          <span class="com"># h i</span>
 
 <span class="com"># Corruption modes</span>
-fx.<span class="fn">corrupt</span>(<span class="str">"vibes"</span>, mode=<span class="str">"bubble"</span>)   <span class="com"># ⓥⓘⓑⓔⓢ</span>
-fx.<span class="fn">corrupt</span>(<span class="str">"hi"</span>,    mode=<span class="str">"broken"</span>)   <span class="com"># #!</span>
-fx.<span class="fn">corrupt</span>(<span class="str">"void"</span>,  mode=<span class="str">"void"</span>)     <span class="com"># V̴⊘ɨ◊</span>
-fx.<span class="fn">corrupt</span>(<span class="str">"hi"</span>,    mode=<span class="str">"glitch"</span>)   <span class="com"># ̴h̶̵i̷</span></pre>
+<span class="kw">print</span>(fx.<span class="fn">corrupt</span>(<span class="str">"vibes"</span>, mode=<span class="str">"bubble"</span>))   <span class="com"># ⓥⓘⓑⓔⓢ</span>
+<span class="kw">print</span>(fx.<span class="fn">corrupt</span>(<span class="str">"hi"</span>,    mode=<span class="str">"broken"</span>))   <span class="com"># #!</span>
+<span class="kw">print</span>(fx.<span class="fn">corrupt</span>(<span class="str">"void"</span>,  mode=<span class="str">"void"</span>))     <span class="com"># V̴⊘ɨ◊</span>
+<span class="kw">print</span>(fx.<span class="fn">corrupt</span>(<span class="str">"hi"</span>,    mode=<span class="str">"glitch"</span>))   <span class="com"># ̴h̶̵i̷</span></pre>
                     </div>
                 </div>
             </div>
