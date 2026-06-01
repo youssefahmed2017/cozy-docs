@@ -137,3 +137,36 @@ window.addEventListener('scroll', updateActiveSection);
 window.addEventListener('load', updateActiveSection);
 
 updateActiveSection();
+
+// ── Theme toggle ──
+const themeBtn  = document.getElementById('themeToggle');
+const themeIcon = document.getElementById('themeIcon');
+
+const DARK_ICON  = 'bi-moon-stars-fill';
+const LIGHT_ICON = 'bi-sun-fill';
+
+function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    document.documentElement.setAttribute('data-bs-theme', theme);
+    if (themeIcon) {
+        if (theme === 'light') {
+            themeIcon.classList.replace(DARK_ICON, LIGHT_ICON);
+        } else {
+            themeIcon.classList.replace(LIGHT_ICON, DARK_ICON);
+        }
+    }
+    localStorage.setItem('ck-theme', theme);
+}
+
+if (themeBtn) {
+    themeBtn.addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme') || 'dark';
+        applyTheme(current === 'dark' ? 'light' : 'dark');
+    });
+}
+
+// Apply saved theme on load
+(function () {
+    const saved = localStorage.getItem('ck-theme') || 'dark';
+    applyTheme(saved);
+})();
