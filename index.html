@@ -30,7 +30,7 @@
             </a>
         </div>
         <div class="navbar-right">
-            <span class="version-tag">v1.0.0</span>
+            <span class="version-tag">v1.0.1</span>
             <a class="nav-icon-btn" href="https://github.com/youssefahmed2017/cozy-kit/" target="_blank" rel="noopener" title="GitHub">
                 <i class="bi bi-github"></i>
                 <span>GitHub</span>
@@ -155,7 +155,7 @@
                 <div class="col-lg-6 reveal">
                     <div class="hero-tag">
                         <span class="dot"></span>
-                        <span>v1.0.0 · MIT License · Python 3.8+</span>
+                        <span>v1.0.1 · MIT License · Python 3.8+</span>
                     </div>
                     <h1>
                         Documentation for
@@ -381,7 +381,7 @@ greet = Greeting(name=<span class="str">"Youssef"</span>, nickname=<span class="
 
 <span class="com"># A Pomodoro that just works</span>
 timer = Timer()
-timer.<span class="fn">pomodoro</span>(work_time=<span class="num">25</span>, break_time=<span class="num">5</span>,
+timer.<span class="fn">start_pomodoro</span>(work_time=<span class="num">25</span>, break_time=<span class="num">5</span>,
                 long_break_time=<span class="num">15</span>, show=<span class="kw">print</span>)
 
 <span class="com"># Text tricks</span>
@@ -623,8 +623,8 @@ g.<span class="fn">add_bedtime_story</span>(
 
                     <h4 class="method-group-title">Pomodoro</h4>
                     <div class="method-block">
-                        <div class="method-name">pomodoro<span class="args">(work_time, break_time, long_break_time, show)</span></div>
-                        <p class="method-desc">Runs a full cycle: work → short break → work → … → long break every 4 work sessions. All times are in <strong>minutes</strong>. Sends a desktop notification at each transition.</p>
+                        <div class="method-name">start_pomodoro<span class="args">(work_time, break_time, long_break_time, show)</span></div>
+                        <p class="method-desc">Creates a new Thread, then runs a full cycle: work → short break → work → … → long break every 4 work sessions. All times are in <strong>minutes</strong>. Sends a desktop notification at each transition.</p>
                     </div>
                     <div class="method-block">
                         <div class="method-name">pause_pomodoro<span class="args">()</span></div>
@@ -676,25 +676,13 @@ t.<span class="fn">countdown</span>(count=<span class="num">5</span>, time_type=
 <span class="com"># 04:59  04:58  ...  00:00  ⏰ Time's up!</span>
 
 <span class="com"># Full Pomodoro session</span>
-t.<span class="fn">pomodoro</span>(
+t.<span class="fn">start_pomodoro</span>(
     work_time=<span class="num">25</span>,
     break_time=<span class="num">5</span>,
     long_break_time=<span class="num">15</span>,
     show=<span class="kw">print</span>,
 )
 <span class="com"># 💻 Work Time → ☕ Short Break → 💻 Work Time → ...</span>
-
-<span class="com"># Control from another thread</span>
-<span class="kw">import</span> threading
-thread = threading.Thread(
-    target=<span class="kw">lambda</span>: t.<span class="fn">pomodoro</span>(<span class="num">25</span>, <span class="num">5</span>, <span class="num">15</span>, show=<span class="kw">print</span>),
-    daemon=<span class="kw">True</span>
-)
-thread.<span class="fn">start</span>()
-<span class="com"># ... later ...</span>
-t.<span class="fn">pause_pomodoro</span>()
-t.<span class="fn">resume_pomodoro</span>()
-t.<span class="fn">stop_pomodoro</span>()
 
 <span class="com"># Stopwatch</span>
 t.<span class="fn">start_stopwatch</span>()
@@ -984,15 +972,15 @@ c = TextCustomizations()
                     </div>
                     <div class="method-block">
                         <div class="method-name">progress_bar<span class="args">(percent)</span> <span class="ret">→ str</span></div>
-                        <p class="method-desc">A 10-block bar — filled blocks for completed deciles, dashes for the rest. Example: <code>[███████---] 70%</code>.</p>
+                        <p class="method-desc">A rounded bar — blue blocks for completed deciles, red blocks for the rest. Example: <code>━━━━━━━ (blue) ━━━ (red)  70%</code>.</p>
                     </div>
                     <div class="method-block">
                         <div class="method-name">cozy_box<span class="args">(text)</span> <span class="ret">→ str</span></div>
                         <p class="method-desc">A single-line message wrapped in a tidy double-line Unicode box.</p>
                     </div>
                     <div class="method-block">
-                        <div class="method-name">spinner<span class="args">(loadtime, load_type, style)</span></div>
-                        <p class="method-desc">A live terminal spinner that animates for the given duration, then prints <code>Done!</code>. <code>load_type</code>: <code>"sec"</code>, <code>"min"</code>, or <code>"hour"</code>. <code>style</code>: <code style="color:var(--honey);">"line"</code>, <code style="color:var(--teal);">"dots"</code>, or <code style="color:var(--plum);">"arrows"</code>.</p>
+                        <div class="method-name">spinner<span class="args">(loadtime, load_type, style, message)</span></div>
+                        <p class="method-desc">A live terminal spinner that animates for the given duration, then prints <code>Done!</code>. <code>load_type</code>: <code>"sec"</code>, <code>"min"</code>, or <code>"hour"</code>. <code>style</code>: <code style="color:var(--honey);">"line"</code>, <code style="color:var(--teal);">"dots"</code>, or <code style="color:var(--plum);">"arrows"</code>. <code style="color:var(--honey);">message</code>: Anything you want to display like <code style="color:var(--honey);">Loading</code>.</p>
                     </div>
 
                 </div>
@@ -1028,7 +1016,7 @@ ui = CozyUI()
 # ║ Refactor    ║ queued  ║ —    ║
 # ╚═════════════╩═════════╩══════╝</span>
 
-<span class="kw">print</span>(ui.<span class="fn">progress_bar</span>(<span class="num">70</span>))   <span class="com"># [███████---] 70%</span>
+<span class="kw">print</span>(ui.<span class="fn">progress_bar</span>(<span class="num">70</span>))   <span class="com"># ━━━━━━━ (blue) ━━━ (red)  70%</span>
 
 <span class="kw">print</span>(ui.<span class="fn">cozy_box</span>(<span class="str">"all done!"</span>))
 <span class="com"># ╔═══════════╗</span>
@@ -1124,15 +1112,11 @@ d = Details()
                     </p>
                     <div class="method-block">
                         <div class="method-name">cozy-kit <span class="args">--version</span></div>
-                        <p class="method-desc">Prints the installed version, e.g. <code>CozyKit v1.0.0</code>.</p>
+                        <p class="method-desc">Prints the installed version, e.g. <code>cozy-kit v1.0.1</code>.</p>
                     </div>
                     <div class="method-block">
                         <div class="method-name">cozy-kit <span class="args">--info</span></div>
-                        <p class="method-desc">Prints the full <code>Details.about()</code> metadata table — author, email, description, links, and license.</p>
-                    </div>
-                    <div class="method-block">
-                        <div class="method-name"><i class="bi bi-arrow-up-circle"></i> Update checks</div>
-                        <p class="method-desc">While <code>settings.notice_if_on_older_update</code> is enabled (the default), each invocation pings PyPI and prints an upgrade notice if your version is behind.</p>
+                        <p class="method-desc">Prints the full <code>Details.about()</code> metadata table — author, email, description, links, license, and a quick explanation paragraph.</p>
                     </div>
                 </div>
                 <div class="col-lg-7 reveal">
@@ -1146,7 +1130,7 @@ d = Details()
                         </div>
 <pre class="code-body"><span class="com"># Check the installed version</span>
 <span class="fn">cozy-kit</span> --version
-<span class="com"># CozyKit v1.0.0</span>
+<span class="com"># CozyKit v1.0.1</span>
 
 <span class="com"># Show package details</span>
 <span class="fn">cozy-kit</span> --info
@@ -1156,10 +1140,11 @@ d = Details()
 # ║ Author       ║ Youssef Ahmed                    ║
 # ║ Author email ║ youssef.ahmed.29062017@gmail.com ║
 # ║ ...          ║ ...                              ║
-# ╚══════════════╩══════════════════════════════════╝</span>
-
-<span class="com"># If your version is outdated:</span>
-<span class="com"># [ Notice ] A new update of cozy-kit is here. 1.0.0 → 1.1.0</span></pre>
+# ╚══════════════╩══════════════════════════════════╝
+# This package is a package made by Youssef Ahmed.
+# The package's latest version was v{version('cozy-kit')}.
+# The package has started to reach a great point where it is starting to become stable</span>
+                        </pre>
                     </div>
                 </div>
             </div>
@@ -1260,7 +1245,7 @@ greet = Greeting(name=<span class="str">"Youssef"</span>, nickname=<span class="
                     </div>
                 </div>
                 <div class="col-12 reveal">
-                    <div class="example-label">02 / Threaded Pomodoro session</div>
+                    <div class="example-label">02 / Pomodoro session</div>
                     <div class="code-card">
                         <div class="code-head">
                             <span><i class="bi bi-stopwatch"></i> pomodoro_session.py</span>
@@ -1269,17 +1254,13 @@ greet = Greeting(name=<span class="str">"Youssef"</span>, nickname=<span class="
                                 <button class="copy-btn-code" onclick="copyCode(this)" aria-label="Copy"><i class="bi bi-clipboard"></i></button>
                             </div>
                         </div>
-<pre class="code-body"><span class="kw">import</span> threading, time
+<pre class="code-body"><span class="kw">import</span> time
 <span class="kw">from</span> cozy_kit <span class="kw">import</span> Timer, CozyUI
 
 t  = Timer()
 ui = CozyUI()
 
-<span class="kw">def</span> <span class="fn">run_session</span>():
-    t.<span class="fn">pomodoro</span>(work_time=<span class="num">25</span>, break_time=<span class="num">5</span>, long_break_time=<span class="num">15</span>, show=<span class="kw">print</span>)
-
-session = threading.Thread(target=<span class="fn">run_session</span>, daemon=<span class="kw">True</span>)
-session.<span class="fn">start</span>()
+t.<span class="fn">pomodoro</span>(work_time=<span class="num">25</span>, break_time=<span class="num">5</span>, long_break_time=<span class="num">15</span>, show=<span class="kw">print</span>)
 
 time.<span class="fn">sleep</span>(<span class="num">10</span>)
 <span class="kw">print</span>(ui.<span class="fn">cozy_box</span>(<span class="str">"Pausing..."</span>))
@@ -1310,6 +1291,8 @@ fx = TextEditor()
 
 header = c.<span class="fn">customize</span>(<span class="str">"RESULTS"</span>, <span class="str">"bold"</span>, <span class="str">"cyan"</span>)
 <span class="kw">print</span>(ui.<span class="fn">cozy_title</span>(header))
+<span class="com">
+# Bold Cyan "====== RESULTS ======"
 
 <span class="kw">print</span>(ui.<span class="fn">cozy_table</span>(
     headers=[<span class="str">"Task"</span>, <span class="str">"Status"</span>, <span class="str">"Notes"</span>],
@@ -1319,12 +1302,22 @@ header = c.<span class="fn">customize</span>(<span class="str">"RESULTS"</span>,
         [<span class="str">"Docs"</span>,        <span class="str">"✓ done"</span>,    <span class="str">"1h"</span>],
     ],
 ))
+<span class="com">
+# ╔═════════════╦═══════════╦═══════╗
+# ║ Task        ║ Status    ║ Notes ║
+# ╠═════════════╬═══════════╬═══════╣
+# ║ Write tests ║ ✓ done    ║ 45m   ║
+# ║ Deploy      ║ ⚠ pending ║ —     ║
+# ║ Docs        ║ ✓ done    ║ 1h    ║
+# ╚═════════════╩═══════════╩═══════╝
+</span>
 
-<span class="kw">print</span>(ui.<span class="fn">progress_bar</span>(<span class="num">66</span>))   <span class="com"># [██████----] 66%</span>
+<span class="kw">print</span>(ui.<span class="fn">progress_bar</span>(<span class="num">66</span>))   <span class="com"># ━━━━━━━ (blue) ━━━ (red) 66%</span>
 
 label = fx.<span class="fn">snake_case</span>(<span class="str">"My Feature Flag"</span>)
 <span class="kw">print</span>(c.<span class="fn">customize</span>(label, <span class="str">"dim"</span>, <span class="str">"yellow"</span>))
-<span class="com"># dim yellow "my_feature_flag"</span></pre>
+</span><span class="com"># dim yellow "my_feature_flag"</span>
+                        </pre>
                     </div>
                 </div>
             </div>
@@ -1343,7 +1336,7 @@ label = fx.<span class="fn">snake_case</span>(<span class="str">"My Feature Flag
 
                     <div class="faq-item">
                         <div class="faq-q"><i class="bi bi-question-circle"></i> Does cozy-kit work on Windows, macOS, and Linux?</div>
-                        <div class="faq-a">Yes. The core classes work on all three platforms. Desktop notifications via <code>plyer</code> (used in <code>Timer.pomodoro()</code>) may require extra setup on some Linux environments (e.g., <code>libnotify</code>).</div>
+                        <div class="faq-a">Yes. The core classes work on all three platforms. Desktop notifications via <code>plyer</code> (used in <code>Timer.start_pomodoro()</code>) may require extra setup on some Linux environments (e.g., <code>libnotify</code>).</div>
                     </div>
 
                     <div class="faq-item">
@@ -1380,18 +1373,13 @@ settings.notice_if_on_older_update = <span class="kw">False</span></pre>
                     </div>
 
                     <div class="faq-item">
-                        <div class="faq-q"><i class="bi bi-question-circle"></i> Why does <code>pomodoro()</code> block my main thread?</div>
-                        <div class="faq-a">By design — it runs a blocking loop. To use pause/resume controls, call <code>pomodoro()</code> in a <code>threading.Thread</code> and control it from your main thread. See the <a href="#examples" class="inline-link">Threaded Pomodoro example</a>.</div>
-                    </div>
-
-                    <div class="faq-item">
                         <div class="faq-q"><i class="bi bi-question-circle"></i> What Python version does cozy-kit require?</div>
                         <div class="faq-a">Python 3.8 or later.</div>
                     </div>
 
                     <div class="faq-item">
                         <div class="faq-q"><i class="bi bi-question-circle"></i> Where can I report a bug or request a feature?</div>
-                        <div class="faq-a">Open an issue on <a href="https://github.com/youssefahmed2017/cozy-kit/issues" target="_blank" rel="noopener" class="inline-link">GitHub</a>, or email Youssef at <a href="mailto:youssef.ahmed.29062017@gmail.com" class="inline-link">youssef.ahmed.29062017@gmail.com</a>.</div>
+                        <div class="faq-a">Open an issue on <a href="https://github.com/youssefahmed2017/cozy-kit/issues" target="_blank" rel="noopener" class="inline-link">GitHub</a>.</div>
                     </div>
 
                 </div>
@@ -1437,7 +1425,7 @@ settings.notice_if_on_older_update = <span class="kw">False</span></pre>
                 <h5>Links</h5>
                 <a href="https://pypi.org/project/cozy-kit/" target="_blank" rel="noopener">PyPI</a>
                 <a href="https://github.com/youssefahmed2017/cozy-kit" target="_blank" rel="noopener">GitHub</a>
-                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=youssef.ahmed.29062017@gmail.com" target="_blank" rel="noopener">
+                <a href="mailto:youssef.ahmed.29062017@gmail.com" target="_blank" rel="noopener">
                     <i class="bi bi-envelope me-1"></i> Email Youssef
                 </a>
             </div>
