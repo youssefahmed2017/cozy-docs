@@ -1112,13 +1112,33 @@ d = Details()
                     </p>
                     <div class="method-block">
                         <div class="method-name">cozy-kit <span class="args">--version</span></div>
-                        <p class="method-desc">Prints the installed version, e.g. <code>cozy-kit v1.0.1</code>.</p>
+                        <p class="method-desc">Prints the installed version, e.g. <code>cozy-kit v1.0.3</code>.</p>
                     </div>
                     <div class="method-block">
                         <div class="method-name">cozy-kit <span class="args">--info</span></div>
                         <p class="method-desc">Prints the full <code>Details.about()</code> metadata table — author, email, description, links, license, and a quick explanation paragraph.</p>
                     </div>
-                </div>
+                    <div class="method-block">
+                        <div class="method-name">cozy-kit <span class="args">--license</span></div>
+                        <p class="method-desc">Print the License for cozy-kit, e.g. <code>MIT License</code></p>
+                    </div>
+                    <div class="method-block">
+                        <div class="method-name">cozy-kit <span class="args">--pypi</span></div>
+                        <p class="method-desc">Opens cozy-kit's PyPI page in a new tab.</p>
+                    </div>
+                    <div class="method-block">
+                        <div class="method-name">cozy-kit <span class="args">--github</span></div>
+                        <p class="method-desc">Opens cozy-kit's GitHub repo in a new tab.</p>
+                    </div>
+                    <div class="method-block">
+                        <div class="method-name">cozy-kit <span class="args">--homepage</span></div>
+                        <p class="method-desc">Opens cozy-kit's Homepage in a new tab.</p>
+                    </div>
+                    <div class="method-block">
+                        <div class="method-name">cozy-kit <span class="args">--docs</span></div>
+                        <p class="method-desc">Opens cozy-kit's Documentation website in a new tab.</p>
+                    </div>
+                    </div>
                 <div class="col-lg-7 reveal">
                     <div class="code-card">
                         <div class="code-head">
@@ -1130,7 +1150,7 @@ d = Details()
                         </div>
 <pre class="code-body"><span class="com"># Check the installed version</span>
 <span class="fn">cozy-kit</span> --version
-<span class="com"># CozyKit v1.0.1</span>
+<span class="com"># CozyKit v1.0.3</span>
 
 <span class="com"># Show package details</span>
 <span class="fn">cozy-kit</span> --info
@@ -1142,8 +1162,27 @@ d = Details()
 # ║ ...          ║ ...                              ║
 # ╚══════════════╩══════════════════════════════════╝
 # This package is a package made by Youssef Ahmed.
-# The package's latest version was v{version('cozy-kit')}.
+# The package's latest version was v1.0.3.
 # The package has started to reach a great point where it is starting to become stable</span>
+
+<span class="com"># Show License</span>
+<span class="fn">cozy-kit</span> --license
+<span class="com">
+# MIT License
+</span>
+<span class="com"># Open some Project URLs</span>
+<span class="fn">cozy-kit</span> --pypi
+<span class="com"># Opens "https://pypi.org/project/cozy-kit"</span>
+<span class="com"># Successfully opened cozy-kit's PyPI page ✔️</span>
+<span class="fn">cozy-kit</span> --github
+<span class="com"># Opens "https://github.com/youssefahmed2017/cozy-kit"</span>
+<span class="com"># Successfully opened cozy-kit's GitHub repo ✔️</span>
+<span class="fn">cozy-kit</span> --homepage
+<span class="com"># Opens "https://cozykit-home.vercel.app"</span>
+<span class="com"># Successfully opened cozy-kit's Homepage ✔️</span>
+<span class="fn">cozy-kit</span> --docs
+<span class="com"># Opens "https://cozy-docs.vercel.app"</span>
+<span class="com"># Successfully opened cozy-kit's Documentation ✔️</span>
                         </pre>
                     </div>
                 </div>
