@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Offline</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+    iframe {
+    border: none;
+    border-radius: 16px;
+}
+        .iframe-div {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+}
+        h1 {
+    text-align: center;
+    font-family: "Fraunces", serif;
+    font-size: clamp(3rem, 8vw, 5rem);
+    margin-bottom: 0.25rem;
+}
+        p {
+            text-align: center;
+    font-size: clamp(1.2rem, 3vw, 2rem);
+        }
+        h2 {
+            text-align: center;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+        }
+
+         .accent {
+        background: linear-gradient(120deg, var(--amber) 0%, var(--honey) 40%, var(--rose) 100%);
+        -webkit-background-clip: text; background-clip: text;
+        color: transparent; font-style: italic;
+        font-variation-settings: "SOFT" 100;
+         font-weight: 800;
+             font-family: "Fraunces", serif;
+}
+         :root {
+                 --bg-deep: #120c1f;
+    --bg-mid: #1a1230;
+    --bg-soft: #221839;
+    --surface: #2a1f44;
+    --text-primary: #f5ebe0;
+    --text-soft: #d8c9b8;
+    --text-muted: #9a8aa8;
+    --amber: #ffb675;
+    --rose: #8b6a76;
+    --honey: #ffd166;
+         }
+    body {
+
+    margin: 0;
+    min-height: 100vh;
+
+    background: linear-gradient(
+        180deg,
+        var(--bg-deep),
+        var(--bg-mid)
+    );
+
+    color: var(--text-primary);
+    font-family: "Fraunces", serif;
+
+    padding: 1rem;
+    box-sizing: border-box;
+}
+    </style>
+</head>
+<body>
+<h1 class="accent">Uh oh...</h1>
+<p>You're offline!</p>
+<h2>Play <span class="accent">Dino</span> while you wait for the internet to come back!</h2>
+<div class="iframe-div">
+<iframe
+    src="dino.html"
+    style="
+        width:100%;
+        max-width:1000px;
+        height:70vh;
+        min-height:400px;
+        border:none;
+    ">
+    Seems like your browser doesn't support iframes
+</iframe>
+</div>
+</body>
+</html>
