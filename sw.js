@@ -1,4 +1,4 @@
-const CACHE_NAME = "cozykit-v3";
+const CACHE_NAME = "cozykit-v4";
 
 const FILES_TO_CACHE = [
     "dino/offline.html"
