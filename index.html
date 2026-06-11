@@ -30,7 +30,7 @@
             </a>
         </div>
         <div class="navbar-right">
-            <span class="version-tag">v1.0.1</span>
+            <span class="version-tag">v1.0.4</span>
             <a class="nav-icon-btn" href="https://github.com/youssefahmed2017/cozy-kit/" target="_blank" rel="noopener" title="GitHub">
                 <i class="bi bi-github"></i>
                 <span>GitHub</span>
@@ -106,15 +106,15 @@
                     <a href="#details" class="nav-link-item nav-class-link" data-section="details">
                         <i class="bi bi-info-circle"></i> Details
                     </a>
+                    <a href="#smtp-mailer" class="nav-link-item nav-class-link" data-section="smtp-mailer">
+                        <i class="bi bi-envelope"></i> SMTPMailer
+                    </a>
                 </div>
 
                 <div class="nav-section">
                     <span class="nav-section-label">Reference</span>
                     <a href="#cli" class="nav-link-item" data-section="cli">
                         <i class="bi bi-terminal"></i> CLI
-                    </a>
-                    <a href="#settings" class="nav-link-item" data-section="settings">
-                        <i class="bi bi-gear"></i> Settings
                     </a>
                 </div>
 
@@ -155,7 +155,7 @@
                 <div class="col-lg-6 reveal">
                     <div class="hero-tag">
                         <span class="dot"></span>
-                        <span>v1.0.1 · MIT License · Python 3.8+</span>
+                        <span>v1.0.4 · MIT License · Python 3.8+</span>
                     </div>
                     <h1>
                         Documentation for
@@ -211,10 +211,10 @@ ui    = CozyUI()
     <section class="section" id="modules">
         <div class="container">
             <div class="text-center mb-5 reveal">
-                <span class="section-eyebrow">// Six focused modules</span>
+                <span class="section-eyebrow">// Seven focused modules</span>
                 <h2 class="section-title">Everything you need, <span class="accent">nothing you don't.</span></h2>
                 <p class="section-lead mx-auto">
-                    Six independent classes. Friendly APIs. Thoughtful defaults. Zero ceremony.
+                    Seven independent classes. Friendly APIs. Thoughtful defaults. Zero ceremony.
                 </p>
             </div>
             <div class="row g-4 reveal-stagger">
@@ -237,7 +237,7 @@ ui    = CozyUI()
                         <p>Countdowns, fully-featured Pomodoro sessions with desktop notifications, stopwatches, and friendly wait helpers.</p>
                         <div class="module-tags">
                             <span class="module-tag">countdown()</span>
-                            <span class="module-tag">pomodoro()</span>
+                            <span class="module-tag">start_pomodoro()</span>
                             <span class="module-tag">stopwatch</span>
                         </div>
                     </a>
@@ -289,6 +289,20 @@ ui    = CozyUI()
                     </a>
                 </div>
             </div>
+            <div class="row g-4 reveal-stagger mt-4">
+                <div class="col-md-6 col-lg-4">
+                    <a href="#smtp-mailer" class="module-card custom">
+                        <div class="module-icon"><i class="bi bi-envelope"></i></div>
+                        <h3>SMTPMailer</h3>
+                        <p>Send plain-text or HTML email over SMTP, with optional TLS login and file attachments.</p>
+                        <div class="module-tags">
+                            <span class="module-tag">send_mail()</span>
+                            <span class="module-tag">send_html_mail()</span>
+                            <span class="module-tag">attachments</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -312,13 +326,13 @@ ui    = CozyUI()
                         <ul class="info-list">
                             <li>Python 3.8 or later</li>
                             <li><code>plyer</code> — desktop notifications (auto-installed)</li>
-                            <li><code>requests</code> — PyPI update checks (auto-installed)</li>
+                            <li><code>rich</code> — CLI beauty (auto-installed)</li>
                         </ul>
                     </div>
                     <div class="info-block" style="margin-top:1rem;">
                         <div class="info-block-label"><i class="bi bi-wrench"></i> Contributor setup</div>
                         <p style="color:var(--text-soft);font-size:.94rem;margin:0;">
-                            Clone the repo and install in editable mode from within the <code>project/</code> directory.
+                            Clone the repo and install in editable mode from the repository root.
                         </p>
                     </div>
                 </div>
@@ -531,7 +545,7 @@ ui = CozyUI()
                     <h4 class="method-group-title">Extend the Database</h4>
                     <div class="method-block">
                         <div class="method-name">add_bedtime_story<span class="args">(title, content)</span></div>
-                        <p class="method-desc">Permanently appends a new bedtime story to <code>bedtime_stories.json</code>. Both must be non-empty — raises <code>InvalidStoryError</code> otherwise.</p>
+                        <p class="method-desc">Permanently appends a new bedtime story to <code>bedtime_stories.json</code>.</p>
                     </div>
                     <div class="method-block">
                         <div class="method-name">add_motivation<span class="args">(name, content)</span></div>
@@ -628,15 +642,15 @@ g.<span class="fn">add_bedtime_story</span>(
                     </div>
                     <div class="method-block">
                         <div class="method-name">pause_pomodoro<span class="args">()</span></div>
-                        <p class="method-desc">Pauses a running Pomodoro. Raises <code>PomodoroNotStartedError</code> if not started.</p>
+                        <p class="method-desc">Pauses a running Pomodoro.</p>
                     </div>
                     <div class="method-block">
                         <div class="method-name">resume_pomodoro<span class="args">()</span></div>
-                        <p class="method-desc">Resumes a paused Pomodoro. Raises <code>PomodoroNotPausedError</code> if not paused.</p>
+                        <p class="method-desc">Resumes a paused Pomodoro.</p>
                     </div>
                     <div class="method-block">
                         <div class="method-name">stop_pomodoro<span class="args">()</span></div>
-                        <p class="method-desc">Stops the Pomodoro and resets state. Raises <code>PomodoroNotStartedError</code> if not started.</p>
+                        <p class="method-desc">Stops the Pomodoro and resets state.</p>
                     </div>
 
                     <h4 class="method-group-title">Utilities</h4>
@@ -848,7 +862,7 @@ fx = TextEditor()
                         <p class="method-desc">No arguments. Initializes the ANSI style mapping internally.</p>
                     </div>
 
-                    <h4 class="method-group-title">Method</h4>
+                    <h4 class="method-group-title">Methods</h4>
                     <div class="method-block">
                         <div class="method-name">customize<span class="args">(text, *styles)</span> <span class="ret">→ str</span></div>
                         <p class="method-desc">Wraps <code>text</code> with one or more ANSI styles then appends a reset. Unknown style names raise <code>InvalidStyleError</code>. Styles stack — pass as many as you like.</p>
@@ -1027,7 +1041,7 @@ ui = CozyUI()
 <span class="com"># ────────────────────</span>
 
 <span class="com"># Live spinner — animates for 3 sec, then prints Done!</span>
-ui.<span class="fn">spinner</span>(loadtime=<span class="num">3</span>, load_type=<span class="str">"sec"</span>, style=<span class="str">"dots"</span>)
+ui.<span class="fn">spinner</span>(loadtime=<span class="num">3</span>, load_type=<span class="str">"sec"</span>, style=<span class="str">"dots"</span>, message=<span class="str">"Loading"</span>)
 <span class="com"># . .. ... .... → Done!</span></pre>
                     </div>
                 </div>
@@ -1058,8 +1072,8 @@ ui.<span class="fn">spinner</span>(loadtime=<span class="num">3</span>, load_typ
                     </div>
                     <h4 class="method-group-title">Methods</h4>
                     <div class="method-block">
-                        <div class="method-name">about<span class="args">()</span> <span class="ret">→ str</span></div>
-                        <p class="method-desc">Returns a fully-formatted <code>CozyUI</code> table with all metadata fields.</p>
+                        <div class="method-name">about<span class="args">()</span> <span class="ret">→ rich.table.Table</span></div>
+                        <p class="method-desc">Returns a fully-formatted Rich table with all metadata fields.</p>
                     </div>
                 </div>
                 <div class="col-lg-8 reveal">
@@ -1093,6 +1107,73 @@ d = Details()
         </div>
     </section>
 
+    <!-- ── SMTP MAILER ── -->
+    <section class="module-section" id="smtp-mailer">
+        <div class="container">
+            <div class="module-header reveal">
+                <div class="module-marker"><i class="bi bi-envelope"></i> Module 07 / SMTPMailer</div>
+                <h2><span class="accent" style="font-style:italic;">SMTPMailer</span></h2>
+                <p class="lead-text">
+                    Send plain-text or HTML email through an SMTP server. The mailer supports
+                    TLS login by default and can attach files from local paths.
+                </p>
+                <div class="import-snippet">
+                    <code><span class="kw">from</span> cozy_kit <span class="kw">import</span> SMTPMailer</code>
+                </div>
+            </div>
+
+            <div class="row g-5">
+                <div class="col-lg-5 reveal">
+                    <h4 class="method-group-title">Constructor</h4>
+                    <div class="method-block">
+                        <div class="method-name"><span class="ret">SMTPMailer(</span><span class="args">host, email, password, use_tls=True, port=587</span><span class="ret">)</span></div>
+                        <p class="method-desc">Creates a mailer for an SMTP host. If <code>use_tls</code> is true, <code>starttls()</code> is called before login.</p>
+                    </div>
+                    <h4 class="method-group-title">Methods</h4>
+                    <div class="method-block">
+                        <div class="method-name">send_mail<span class="args">(subject, body, to_addrs, attachments=None)</span></div>
+                        <p class="method-desc">Sends a plain-text message. <code>to_addrs</code> must be a non-empty list of recipient emails.</p>
+                    </div>
+                    <div class="method-block">
+                        <div class="method-name">send_html_mail<span class="args">(html, to_addrs, subject, attachments=None)</span></div>
+                        <p class="method-desc">Sends an HTML message with the same recipient and attachment behavior as <code>send_mail()</code>.</p>
+                    </div>
+                </div>
+                <div class="col-lg-7 reveal">
+                    <div class="code-card">
+                        <div class="code-head">
+                            <span><i class="bi bi-envelope"></i> send_email.py</span>
+                            <div class="code-head-right">
+                                <span class="lang">python</span>
+                                <button class="copy-btn-code" onclick="copyCode(this)" aria-label="Copy"><i class="bi bi-clipboard"></i></button>
+                            </div>
+                        </div>
+<pre class="code-body"><span class="kw">from</span> cozy_kit <span class="kw">import</span> SMTPMailer
+
+mailer = SMTPMailer(
+    host=<span class="str">"smtp.example.com"</span>,
+    email=<span class="str">"you@example.com"</span>,
+    password=<span class="str">"app-password"</span>,
+)
+
+mailer.<span class="fn">send_mail</span>(
+    subject=<span class="str">"Daily note"</span>,
+    body=<span class="str">"Hello from cozy-kit."</span>,
+    to_addrs=[<span class="str">"friend@example.com"</span>],
+)
+
+mailer.<span class="fn">send_html_mail</span>(
+    html=<span class="str">"&lt;h1&gt;Hello&lt;/h1&gt;&lt;p&gt;Sent with cozy-kit.&lt;/p&gt;"</span>,
+    subject=<span class="str">"HTML note"</span>,
+    to_addrs=[<span class="str">"friend@example.com"</span>],
+    attachments=[<span class="str">"report.pdf"</span>],
+)</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ── CHAPTER: Reference ── -->
     <div class="docs-chapter-divider">
         <div class="chapter-label"><i class="bi bi-book"></i> Reference</div>
@@ -1112,7 +1193,7 @@ d = Details()
                     </p>
                     <div class="method-block">
                         <div class="method-name">cozy-kit <span class="args">--version</span></div>
-                        <p class="method-desc">Prints the installed version, e.g. <code>cozy-kit v1.0.3</code>.</p>
+                        <p class="method-desc">Prints the installed version, e.g. <code>cozy-kit v1.0.4</code>.</p>
                     </div>
                     <div class="method-block">
                         <div class="method-name">cozy-kit <span class="args">--info</span></div>
@@ -1138,6 +1219,10 @@ d = Details()
                         <div class="method-name">cozy-kit <span class="args">--docs</span></div>
                         <p class="method-desc">Opens cozy-kit's Documentation website in a new tab.</p>
                     </div>
+                    <div class="method-block">
+                        <div class="method-name">cozy-kit <span class="args">--doctor</span></div>
+                        <p class="method-desc">Runs a diagnostic report for Python version, package import, latest PyPI version, and local <code>main.py</code> presence.</p>
+                    </div>
                     </div>
                 <div class="col-lg-7 reveal">
                     <div class="code-card">
@@ -1150,7 +1235,7 @@ d = Details()
                         </div>
 <pre class="code-body"><span class="com"># Check the installed version</span>
 <span class="fn">cozy-kit</span> --version
-<span class="com"># CozyKit v1.0.3</span>
+<span class="com"># cozy-kit v1.0.4</span>
 
 <span class="com"># Show package details</span>
 <span class="fn">cozy-kit</span> --info
@@ -1162,8 +1247,7 @@ d = Details()
 # ║ ...          ║ ...                              ║
 # ╚══════════════╩══════════════════════════════════╝
 # This package is a package made by Youssef Ahmed.
-# The package's latest version was v1.0.3.
-# The package has started to reach a great point where it is starting to become stable</span>
+# The package's latest version is v1.0.4.</span>
 
 <span class="com"># Show License</span>
 <span class="fn">cozy-kit</span> --license
@@ -1183,65 +1267,11 @@ d = Details()
 <span class="fn">cozy-kit</span> --docs
 <span class="com"># Opens "https://cozy-docs.vercel.app"</span>
 <span class="com"># Successfully opened cozy-kit's Documentation ✔️</span>
+
+<span class="com"># Run diagnostics</span>
+<span class="fn">cozy-kit</span> --doctor
+<span class="com"># Shows Python, import, PyPI version, and main.py checks</span>
                         </pre>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ── SETTINGS ── -->
-    <section class="doc-section" id="settings">
-        <div class="container">
-            <div class="row g-5">
-                <div class="col-lg-5 reveal">
-                    <div class="module-marker"><i class="bi bi-gear"></i> Configuration</div>
-                    <h2><span class="accent" style="font-style:italic;">Settings</span></h2>
-                    <p class="lead-text">
-                        cozy-kit exposes a single <code>settings</code> object — a pre-instantiated
-                        <code>Settings</code> instance — that controls package-level behavior.
-                        Import and mutate it before using other classes.
-                    </p>
-                    <div class="method-block">
-                        <div class="method-name">settings<span class="args">.notice_if_on_older_update</span> <span class="ret">bool</span></div>
-                        <p class="method-desc">
-                            When <code>True</code> (the default), the CLI checks PyPI on every invocation
-                            and prints a notice if a newer version is available.
-                            Set to <code>False</code> to silence these notices.
-                        </p>
-                    </div>
-                    <div class="info-block" style="margin-top:1.5rem;">
-                        <div class="info-block-label"><i class="bi bi-info-circle"></i> Scope</div>
-                        <p style="color:var(--text-soft);font-size:.94rem;margin:0;">
-                            Changes persist for the lifetime of your Python process. Set it once
-                            at the top of your script before other imports.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-lg-7 reveal">
-                    <div class="code-card">
-                        <div class="code-head">
-                            <span><i class="bi bi-gear"></i> settings_example.py</span>
-                            <div class="code-head-right">
-                                <span class="lang">python</span>
-                                <button class="copy-btn-code" onclick="copyCode(this)" aria-label="Copy"><i class="bi bi-clipboard"></i></button>
-                            </div>
-                        </div>
-<pre class="code-body"><span class="kw">from</span> cozy_kit <span class="kw">import</span> settings
-
-<span class="com"># Default: update checks are ON</span>
-<span class="kw">print</span>(settings.notice_if_on_older_update)  <span class="com"># True</span>
-
-<span class="com"># Disable update notifications</span>
-settings.notice_if_on_older_update = <span class="kw">False</span>
-
-<span class="com"># Now import and use classes normally</span>
-<span class="kw">from</span> cozy_kit <span class="kw">import</span> Greeting
-
-g = Greeting(name=<span class="str">"Youssef"</span>)
-<span class="kw">print</span>(g.<span class="fn">welcome</span>())
-<span class="com"># Welcome Youssef!</span>
-<span class="com"># (no PyPI update notice printed)</span></pre>
                     </div>
                 </div>
             </div>
@@ -1299,7 +1329,7 @@ greet = Greeting(name=<span class="str">"Youssef"</span>, nickname=<span class="
 t  = Timer()
 ui = CozyUI()
 
-t.<span class="fn">pomodoro</span>(work_time=<span class="num">25</span>, break_time=<span class="num">5</span>, long_break_time=<span class="num">15</span>, show=<span class="kw">print</span>)
+t.<span class="fn">start_pomodoro</span>(work_time=<span class="num">25</span>, break_time=<span class="num">5</span>, long_break_time=<span class="num">15</span>, show=<span class="kw">print</span>)
 
 time.<span class="fn">sleep</span>(<span class="num">10</span>)
 <span class="kw">print</span>(ui.<span class="fn">cozy_box</span>(<span class="str">"Pausing..."</span>))
@@ -1384,24 +1414,6 @@ label = fx.<span class="fn">snake_case</span>(<span class="str">"My Feature Flag
                     </div>
 
                     <div class="faq-item">
-                        <div class="faq-q"><i class="bi bi-question-circle"></i> How do I disable update notifications?</div>
-                        <div class="faq-a">
-                            <p style="margin-bottom:.75rem;">Import <code>settings</code> and set <code>notice_if_on_older_update = False</code> at the top of your script before other cozy-kit imports.</p>
-                            <div class="code-card">
-                                <div class="code-head">
-                                    <span>example</span>
-                                    <div class="code-head-right">
-                                        <span class="lang">python</span>
-                                        <button class="copy-btn-code" onclick="copyCode(this)" aria-label="Copy"><i class="bi bi-clipboard"></i></button>
-                                    </div>
-                                </div>
-                                <pre class="code-body" style="padding:.8rem 1.2rem;"><span class="kw">from</span> cozy_kit <span class="kw">import</span> settings
-settings.notice_if_on_older_update = <span class="kw">False</span></pre>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
                         <div class="faq-q"><i class="bi bi-question-circle"></i> Can I use multiple classes in the same script?</div>
                         <div class="faq-a">Absolutely. Every class is completely independent — no shared global state. Instantiate as many as you like.</div>
                     </div>
@@ -1451,13 +1463,13 @@ settings.notice_if_on_older_update = <span class="kw">False</span></pre>
                 <a href="#text-customizations">TextCustomizations</a>
                 <a href="#cozy-ui">CozyUI</a>
                 <a href="#details">Details</a>
+                <a href="#smtp-mailer">SMTPMailer</a>
             </div>
             <div class="col-6 col-md-2">
                 <h5>Reference</h5>
                 <a href="#installation">Installation</a>
                 <a href="#quickstart">Quick Start</a>
                 <a href="#cli">CLI</a>
-                <a href="#settings">Settings</a>
                 <a href="#faq">FAQ</a>
             </div>
             <div class="col-6 col-md-2">
