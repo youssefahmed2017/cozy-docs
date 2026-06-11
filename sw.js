@@ -1,4 +1,4 @@
-const CACHE_NAME = "cozykit-v4";
+const CACHE_NAME = "cozykit-v5";
 
 const FILES_TO_CACHE = [
     "dino/offline.html"
@@ -11,14 +11,17 @@ self.addEventListener("install", event => {
     );
 });
 
+// Intercept all fetch requests
 self.addEventListener("fetch", event => {
     event.respondWith(
-        fetch(event.request).catch(() => {
-            if (event.request.mode === "navigate") {
-                return caches.match("dino/offline.html");
-            }
-
-            return caches.match(event.request);
-        })
+        fetch(event.request)
+            .catch(() => {
+                // If the request is for a page (navigation), return offline.html
+                if (event.request.mode === "navigate") {
+                    return caches.match("dino/offline.html");
+                }
+                // Otherwise, try cache (but nothing else is cached)
+                return caches.match(event.request);
+            })
     );
 });
