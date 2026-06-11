@@ -1,5 +1,5 @@
 if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("dino/sw.js")
+    navigator.serviceWorker.register("/sw.js")
         .then(() => console.log("SW registered"))
         .catch(err => console.error(err));
 }
