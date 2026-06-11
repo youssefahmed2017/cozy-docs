@@ -87,8 +87,8 @@ document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => revealObserv
 // ── Active sidebar link tracking ──
 const sectionIds = [
     'intro','modules','installation','quickstart','key-concepts',
-    'greeting','timer','text-editor','text-customizations','cozy-ui','details',
-    'cli','settings','examples','faq'
+    'greeting','timer','text-editor','text-customizations','cozy-ui','details','smtp-mailer',
+    'cli','examples','faq'
 ];
 
 const sidebarLinks = {};
