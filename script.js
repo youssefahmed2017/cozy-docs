@@ -1,3 +1,9 @@
+if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("dino/sw.js")
+        .then(() => console.log("SW registered"))
+        .catch(err => console.error(err));
+}
+
 // ── Navbar shadow on scroll ──
 const nav = document.getElementById('mainNav');
 window.addEventListener('scroll', () => {
