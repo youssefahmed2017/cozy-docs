@@ -1,4 +1,4 @@
-const CACHE_NAME = "cozykit-v1";
+const CACHE_NAME = "cozykit-v2";
 
 const FILES_TO_CACHE = [
     "dino/offline.html",
@@ -13,10 +13,21 @@ self.addEventListener("install", event => {
 });
 
 self.addEventListener("fetch", event => {
-    if (event.request.mode === "navigate") {
-        event.respondWith(
-            fetch(event.request)
-                .catch(() => caches.match("dino/offline.html"))
-        );
-    }
+    event.respondWith(
+        fetch(event.request).catch(() => {
+
+            // If the iframe requests the game,
+            // give it the cached game instead of offline.html
+            if (event.request.url.includes("dino/dino.html")) {
+                return caches.match("dino/dino.html");
+            }
+
+            // Main page navigations get the offline page
+            if (event.request.mode === "navigate") {
+                return caches.match("dino/offline.html");
+            }
+
+            return caches.match(event.request);
+        })
+    );
 });
