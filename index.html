@@ -1,15 +1,16 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" data-bs-theme="dark" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>cozy-kit — Homepage</title>
-    <meta name="description" content="cozy-kit is a warm collection of Python utilities — greetings, timers, text tools, and terminal UI helpers. By Youssef Ahmed.">
+    <title>cozy-kit — Documentation</title>
+    <meta name="description" content="Documentation for cozy-kit — a cozy Python package with greetings, timers, text utilities, and terminal UI helpers. By Youssef Ahmed.">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -19,103 +20,175 @@
 <!-- ───────── NAVBAR ───────── -->
 <nav class="navbar fixed-top" id="mainNav">
     <div class="navbar-inner">
-
-        <!-- Left: Logo -->
-        <a class="navbar-brand" href="#">
-            <span class="brand-mark">CK</span>
-            <span class="brand-text">cozy-kit</span>
-        </a>
-
-        <!-- Center: Documentation link -->
+        <div class="navbar-left">
+            <button class="sidebar-toggle-btn" id="sidebarToggle" aria-label="Toggle sidebar">
+                <i class="bi bi-layout-sidebar"></i>
+            </button>
+            <a class="navbar-brand" href="#intro">
+                <span class="brand-mark">CD</span>
+                cozy-kit Documentation
+            </a>
+        </div>
         <div class="navbar-right">
-    <span class="version-tag">v1.0.4</span>
-
-    <a class="nav-icon-btn"
-       href="https://cozy-docs.vercel.app"
-       target="_blank"
-       rel="noopener">
-        <i class="bi bi-book"></i>
-        Docs
-    </a>
-
-    <a class="nav-icon-btn"
-       href="https://github.com/youssefahmed2017/cozy-kit"
-       target="_blank"
-       rel="noopener">
-        <i class="bi bi-github"></i>
-        GitHub
-    </a>
-
-    <a class="nav-icon-btn"
-       href="https://pypi.org/project/cozy-kit"
-       target="_blank"
-       rel="noopener">
-        <i class="bi bi-box-seam"></i>
-        PyPI
-    </a>
-
-    <a class="btn-cozy-sm d-none d-md-inline-flex" href="#quickstart">
-        <i class="bi bi-lightning-fill"></i>
-        Get Started
-    </a>
-
-    <button class="theme-toggle"
-            id="themeToggle"
-            aria-label="Toggle light/dark theme">
-        <i class="bi bi-moon-stars-fill" id="themeIcon"></i>
-    </button>
-</div>
+            <span class="version-tag">v1.0.4</span>
+            <a class="nav-icon-btn" href="https://github.com/youssefahmed2017/cozy-kit/" target="_blank" rel="noopener" title="GitHub">
+                <i class="bi bi-github"></i>
+                <span>GitHub</span>
+            </a>
+            <a class="nav-icon-btn" href="https://pypi.org/project/cozy-kit/" target="_blank" rel="noopener" title="PyPI">
+                <i class="bi bi-box-seam"></i>
+                <span class="d-none d-sm-inline">PyPI</span>
+            </a>
+            <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle light/dark theme" title="Toggle theme">
+                <i class="bi bi-moon-stars-fill" id="themeIcon"></i>
+            </button>
+        </div>
     </div>
 </nav>
 
-<!-- ───────── HERO ───────── -->
-<section class="hp-hero" id="hero">
-    <div class="hero-orb one"></div>
-    <div class="hero-orb two"></div>
-    <div class="container">
-        <div class="row align-items-center g-5">
+<!-- ───────── DOCS LAYOUT ───────── -->
+<div class="docs-layout" id="docsLayout">
 
-            <div class="col-lg-6 reveal">
-                <div class="hero-tag">
-                    <span class="dot"></span>
-                    <span>v1.0.4 · MIT License · Python 3.8+</span>
-                </div>
-                <h1>
-                    A warm little<br>
-                    Python toolkit,<br>
-                    <span class="accent">made cozy.</span>
-                </h1>
-                <p class="hero-sub">
-                    Greetings that know the time of day. Pomodoro timers that don't shout.
-                    Text utilities, terminal UI helpers, and a few bedtime stories —
-                    all bundled into one quiet, friendly package.
-                </p>
-                <div class="hero-cta">
-                    <a href="https://cozy-docs.vercel.app" target="_blank" rel="noopener" class="btn-cozy">
-                        <i class="bi bi-book"></i> Read the Docs
-                    </a>
-                    <a href="https://github.com/youssefahmed2017/cozy-kit" target="_blank" rel="noopener" class="btn-ghost">
-                        <i class="bi bi-github"></i> View on GitHub
-                    </a>
-                </div>
-                <div class="install-card mt-4">
-                    <span class="prompt">$</span>
-                    <code id="installCommand">pip install cozy-kit</code>
-                    <button class="copy-btn" onclick="copyInstall(this)" aria-label="Copy install command">
-                        <i class="bi bi-clipboard"></i> Copy
-                    </button>
-                </div>
+    <!-- SIDEBAR -->
+    <aside class="docs-sidebar" id="sidebar">
+        <div class="sidebar-inner">
+            <div class="sidebar-install">
+                <span class="si-prompt">$</span>
+                <code>pip install cozy-kit</code>
+                <button class="si-copy" onclick="copyInstall(this)" aria-label="Copy install command">
+                    <i class="bi bi-clipboard"></i>
+                </button>
             </div>
 
-            <div class="col-lg-6 reveal">
-                <div class="hero-terminal">
-                    <div class="terminal-header">
-                        <span class="term-dot r"></span>
-                        <span class="term-dot y"></span>
-                        <span class="term-dot g"></span>
-                        <span class="title">cozy_demo.py</span>
+            <nav class="sidebar-nav" aria-label="Documentation navigation">
+
+                <div class="nav-section">
+                    <span class="nav-section-label">Introduction</span>
+                    <a href="#intro" class="nav-link-item" data-section="intro">
+                        <i class="bi bi-house-door"></i> Overview
+                    </a>
+                    <a href="#modules" class="nav-link-item" data-section="modules">
+                        <i class="bi bi-boxes"></i>
+                        Modules
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-section-label">Getting Started</span>
+                    <a href="#installation" class="nav-link-item" data-section="installation">
+                        <i class="bi bi-download"></i> Installation
+                    </a>
+                    <a href="#quickstart" class="nav-link-item" data-section="quickstart">
+                        <i class="bi bi-lightning"></i> Quick Start
+                    </a>
+                    <a href="#key-concepts" class="nav-link-item" data-section="key-concepts">
+                        <i class="bi bi-lightbulb"></i> Key Concepts
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-section-label">API Reference</span>
+                    <a href="#greeting" class="nav-link-item nav-class-link" data-section="greeting">
+                        <i class="bi bi-sun"></i> Greeting
+                    </a>
+                    <a href="#timer" class="nav-link-item nav-class-link" data-section="timer">
+                        <i class="bi bi-stopwatch"></i> Timer
+                    </a>
+                    <a href="#text-editor" class="nav-link-item nav-class-link" data-section="text-editor">
+                        <i class="bi bi-type"></i> TextEditor
+                    </a>
+                    <a href="#text-customizations" class="nav-link-item nav-class-link" data-section="text-customizations">
+                        <i class="bi bi-palette"></i> TextCustomizations
+                    </a>
+                    <a href="#cozy-ui" class="nav-link-item nav-class-link" data-section="cozy-ui">
+                        <i class="bi bi-bounding-box"></i> CozyUI
+                    </a>
+                    <a href="#details" class="nav-link-item nav-class-link" data-section="details">
+                        <i class="bi bi-info-circle"></i> Details
+                    </a>
+                    <a href="#smtp-mailer" class="nav-link-item nav-class-link" data-section="smtp-mailer">
+                        <i class="bi bi-envelope"></i> SMTPMailer
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-section-label">Reference</span>
+                    <a href="#cli" class="nav-link-item" data-section="cli">
+                        <i class="bi bi-terminal"></i> CLI
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-section-label">Guides</span>
+                    <a href="#examples" class="nav-link-item" data-section="examples">
+                        <i class="bi bi-code-slash"></i> Examples
+                    </a>
+                    <a href="#faq" class="nav-link-item" data-section="faq">
+                        <i class="bi bi-question-circle"></i> FAQ
+                    </a>
+                </div>
+
+            </nav>
+
+            <div class="sidebar-footer-links">
+                <a href="https://github.com/youssefahmed2017/cozy-kit/" target="_blank" rel="noopener">
+                    <i class="bi bi-github"></i> GitHub
+                </a>
+                <a href="https://pypi.org/project/cozy-kit/" target="_blank" rel="noopener">
+                    <i class="bi bi-box-seam"></i> PyPI
+                </a>
+            </div>
+        </div>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- ───────── MAIN CONTENT ───────── -->
+    <div class="docs-content">
+
+    <!-- ── HERO / OVERVIEW ── -->
+    <section class="hero" id="intro">
+        <div class="hero-orb one"></div>
+        <div class="hero-orb two"></div>
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6 reveal">
+                    <div class="hero-tag">
+                        <span class="dot"></span>
+                        <span>v1.0.4 · MIT License · Python 3.8+</span>
                     </div>
-                    <pre class="terminal-body"><span class="kw">from</span> cozy_kit <span class="kw">import</span> Greeting, CozyUI
+                    <h1>
+                        Documentation for
+                        <span class="accent">cozy-kit.</span>
+                    </h1>
+                    <p class="hero-sub">
+                        Reference guides, examples, and API documentation for cozy-kit.
+                    </p>
+                    <div class="install-card mb-3">
+                        <span class="prompt">$</span>
+                        <code id="installCommand">pip install cozy-kit</code>
+                        <button class="copy-btn" onclick="copyInstall(this)" aria-label="Copy install command">
+                            <i class="bi bi-clipboard"></i> Copy
+                        </button>
+                    </div>
+                    <div class="hero-cta">
+                        <a href="#quickstart" class="btn-cozy">
+                            <i class="bi bi-lightning-fill"></i> Get Started
+                        </a>
+                        <a href="https://github.com/youssefahmed2017/cozy-kit" target="_blank" rel="noopener" class="btn-ghost">
+                            <i class="bi bi-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 reveal">
+                    <div class="hero-terminal">
+                        <div class="terminal-header">
+                            <span class="term-dot r"></span>
+                            <span class="term-dot y"></span>
+                            <span class="term-dot g"></span>
+                            <span class="title">cozy_demo.py</span>
+                        </div>
+                        <pre class="terminal-body"><span class="kw">from</span> cozy_kit <span class="kw">import</span> Greeting, CozyUI
 
 greet = Greeting(name=<span class="str">"Youssef"</span>, nickname=<span class="str">"yo"</span>)
 ui    = CozyUI()
@@ -126,271 +199,206 @@ ui    = CozyUI()
 <span class="kw">print</span>(greet.<span class="fn">auto_greet</span>())
 <span class="com"># Good Morning Youssef!</span>
 <span class="com"># Or good morning Yo!</span>
-<span class="com"># Anyways, here's a quick morning quote.</span>
-<span class="com">#</span>
 <span class="com"># Rise &amp; Shine</span>
 <span class="com"># Every morning is a fresh start...</span></pre>
+                    </div>
                 </div>
             </div>
-
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- ───────── MODULES ───────── -->
-<section class="hp-section" id="features">
-    <div class="container">
-        <div class="text-center mb-5 reveal">
-            <span class="section-eyebrow">// Seven focused modules</span>
-            <h2 class="section-title">Everything you need, <span class="accent">nothing you don't.</span></h2>
-            <p class="section-lead mx-auto">
-                Seven independent classes. Friendly APIs. Thoughtful defaults. Zero ceremony.
-            </p>
-        </div>
-        <div class="row g-3 reveal-stagger">
-
-            <!-- Greeting -->
-            <div class="col-md-6 col-lg-4">
-                <div class="module-card greet">
-                    <div class="module-icon"><i class="bi bi-sun"></i></div>
-                    <h3>Greeting</h3>
-                    <p>Time-aware greetings, motivational quotes, fun facts, bedtime stories, and holiday wishes — with seasonal logic baked in.</p>
-                    <div class="module-tags">
-                        <span class="module-tag">auto_greet()</span>
-                        <span class="module-tag">good_night()</span>
-                        <span class="module-tag">motivate()</span>
-                    </div>
-                </div>
+    <!-- ── MODULES OVERVIEW ── -->
+    <section class="section" id="modules">
+        <div class="container">
+            <div class="text-center mb-5 reveal">
+                <span class="section-eyebrow">// Seven focused modules</span>
+                <h2 class="section-title">Everything you need, <span class="accent">nothing you don't.</span></h2>
+                <p class="section-lead mx-auto">
+                    Seven independent classes. Friendly APIs. Thoughtful defaults. Zero ceremony.
+                </p>
             </div>
-
-            <!-- Timer -->
-            <div class="col-md-6 col-lg-4">
-                <div class="module-card timer">
-                    <div class="module-icon"><i class="bi bi-stopwatch"></i></div>
-                    <h3>Timer</h3>
-                    <p>Countdowns, fully-featured Pomodoro sessions with desktop notifications, stopwatches, and a friendly wait helper.</p>
-                    <div class="module-tags">
-                        <span class="module-tag">countdown()</span>
-                        <span class="module-tag">start_pomodoro()</span>
-                        <span class="module-tag">stopwatch</span>
-                    </div>
+            <div class="row g-4 reveal-stagger">
+                <div class="col-md-6 col-lg-4">
+                    <a href="#greeting" class="module-card greet">
+                        <div class="module-icon"><i class="bi bi-sun"></i></div>
+                        <h3>Greeting</h3>
+                        <p>Time-aware greetings, bedtime stories, motivational quotes, fun facts, and holiday wishes — with seasonal logic baked in.</p>
+                        <div class="module-tags">
+                            <span class="module-tag">auto_greet()</span>
+                            <span class="module-tag">good_night()</span>
+                            <span class="module-tag">motivate()</span>
+                        </div>
+                    </a>
                 </div>
-            </div>
-
-            <!-- TextEditor -->
-            <div class="col-md-6 col-lg-4">
-                <div class="module-card text">
-                    <div class="module-icon"><i class="bi bi-type"></i></div>
-                    <h3>TextEditor</h3>
-                    <p>Caesar ciphers, Morse code, case conversions, text analysis, and four playful corruption modes — glitch, broken, bubble, void.</p>
-                    <div class="module-tags">
-                        <span class="module-tag">to_morse()</span>
-                        <span class="module-tag">caesar_cipher()</span>
-                        <span class="module-tag">corrupt()</span>
-                    </div>
+                <div class="col-md-6 col-lg-4">
+                    <a href="#timer" class="module-card timer">
+                        <div class="module-icon"><i class="bi bi-stopwatch"></i></div>
+                        <h3>Timer</h3>
+                        <p>Countdowns, fully-featured Pomodoro sessions with desktop notifications, stopwatches, and friendly wait helpers.</p>
+                        <div class="module-tags">
+                            <span class="module-tag">countdown()</span>
+                            <span class="module-tag">start_pomodoro()</span>
+                            <span class="module-tag">stopwatch</span>
+                        </div>
+                    </a>
                 </div>
-            </div>
-
-            <!-- TextCustomizations -->
-            <div class="col-md-6 col-lg-4">
-                <div class="module-card custom">
-                    <div class="module-icon"><i class="bi bi-palette"></i></div>
-                    <h3>TextCustomizations</h3>
-                    <p>ANSI color, background, and effect codes — wrap any string in bold, red, underline, blinking, or stack multiple styles at once.</p>
-                    <div class="module-tags">
-                        <span class="module-tag">customize()</span>
-                        <span class="module-tag">ANSI colors</span>
-                        <span class="module-tag">text effects</span>
-                    </div>
+                <div class="col-md-6 col-lg-4">
+                    <a href="#text-editor" class="module-card text">
+                        <div class="module-icon"><i class="bi bi-type"></i></div>
+                        <h3>TextEditor</h3>
+                        <p>Caesar ciphers, Morse code, case conversions, vowel counts, and four playful corruption modes — glitch, broken, bubble, void.</p>
+                        <div class="module-tags">
+                            <span class="module-tag">to_morse()</span>
+                            <span class="module-tag">caesar_cipher()</span>
+                            <span class="module-tag">corrupt()</span>
+                        </div>
+                    </a>
                 </div>
-            </div>
-
-            <!-- CozyUI -->
-            <div class="col-md-6 col-lg-4">
-                <div class="module-card ui">
-                    <div class="module-icon"><i class="bi bi-bounding-box"></i></div>
-                    <h3>CozyUI</h3>
-                    <p>Box-drawn terminal tables, titled dividers, progress bars, spinners, and tidy boxes — for when your CLI deserves a little more.</p>
-                    <div class="module-tags">
-                        <span class="module-tag">cozy_table()</span>
-                        <span class="module-tag">progress_bar()</span>
-                        <span class="module-tag">spinner()</span>
-                    </div>
+                <div class="col-md-6 col-lg-4">
+                    <a href="#text-customizations" class="module-card custom">
+                        <div class="module-icon"><i class="bi bi-palette"></i></div>
+                        <h3>TextCustomizations</h3>
+                        <p>ANSI color, background, and style codes — wrap any string in red, bold, underline, blinking, or mix-and-match combos.</p>
+                        <div class="module-tags">
+                            <span class="module-tag">customize()</span>
+                            <span class="module-tag">ANSI</span>
+                            <span class="module-tag">colors &amp; styles</span>
+                        </div>
+                    </a>
                 </div>
-            </div>
-
-            <!-- CLI -->
-            <div class="col-md-6 col-lg-4">
-                <div class="module-card det">
-                    <div class="module-icon"><i class="bi bi-terminal"></i></div>
-                    <h3>CLI</h3>
-                    <p>A bundled CLI for quick version checks and package info right from your terminal.</p>
-                    <div class="module-tags">
-                        <span class="module-tag">cozy-kit --version</span>
-                        <span class="module-tag">cozy-kit --info</span>
-                        <span class="module-tag">cozy-kit --doctor</span>
-                    </div>
+                <div class="col-md-6 col-lg-4">
+                    <a href="#cozy-ui" class="module-card ui">
+                        <div class="module-icon"><i class="bi bi-bounding-box"></i></div>
+                        <h3>CozyUI</h3>
+                        <p>Box-drawn terminal tables, titled dividers, progress bars, spinners, and clean little boxes — for when your CLI deserves better.</p>
+                        <div class="module-tags">
+                            <span class="module-tag">cozy_table()</span>
+                            <span class="module-tag">progress_bar()</span>
+                            <span class="module-tag">spinner()</span>
+                        </div>
+                    </a>
                 </div>
-            </div>
-
-            <!-- SMTPMailer -->
+                <div class="col-md-6 col-lg-4">
+                    <a href="#details" class="module-card det">
+                        <div class="module-icon"><i class="bi bi-info-circle"></i></div>
+                        <h3>Details</h3>
+                        <p>Quick metadata about the package — author, license, links — rendered as a cozy formatted table you can drop straight into your terminal.</p>
+                        <div class="module-tags">
+                            <span class="module-tag">about()</span>
+                        </div>
+                    </a>
+                </div>
             <div class="col-md-6 col-lg-4">
-                <div class="module-card mailer">
+                <a href="#smtp-mailer" class="module-card mailer">
                     <div class="module-icon"><i class="bi bi-envelope"></i></div>
                     <h3>SMTPMailer</h3>
-                    <p>A bundled CLI for quick version checks and package info right from your terminal.</p>
+                    <p>Send plain-text or HTML email over SMTP — with optional TLS login and file attachments.</p>
                     <div class="module-tags">
                         <span class="module-tag">send_mail()</span>
                         <span class="module-tag">send_html_mail()</span>
                         <span class="module-tag">attachments</span>
                     </div>
-                </div>
-            </div>
-            </div>
-        </div>
-</section>
-
-<!-- ───────── PHILOSOPHY ───────── -->
-<section class="hp-section hp-alt" id="philosophy">
-    <div class="container">
-        <div class="text-center mb-5 reveal">
-            <span class="section-eyebrow">// Design philosophy</span>
-            <h2 class="section-title">Built around <span class="accent">how you actually work.</span></h2>
-            <p class="section-lead mx-auto">
-                A few deliberate choices that make cozy-kit feel different from the average utility library.
-            </p>
-        </div>
-        <div class="row g-4 reveal-stagger">
-
-            <div class="col-md-6 col-lg-4">
-                <div class="concept-card">
-                    <div class="concept-icon"><i class="bi bi-arrow-return-right"></i></div>
-                    <h4>Strings, not side effects</h4>
-                    <p>Most methods return plain strings. You decide whether to print, log, assign, or splice them. The library doesn't assume what you want to do with its output.</p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="concept-card">
-                    <div class="concept-icon"><i class="bi bi-clock"></i></div>
-                    <h4>Time &amp; season aware</h4>
-                    <p><code>auto_greet()</code> reads the system clock and current month, then selects the right greeting — morning bands shift depending on whether it's winter, summer, or another season.</p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="concept-card">
-                    <div class="concept-icon"><i class="bi bi-arrow-right-circle"></i></div>
-                    <h4>The <code>show</code> callback</h4>
-                    <p>Blocking timer methods accept a <code>show</code> callable instead of printing directly. Pass <code>print</code>, a logger, or a GUI label updater — the choice is yours.</p>
-                    <div class="concept-example"><code>timer.countdown(5, "min", show=print)</code></div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="concept-card">
-                    <div class="concept-icon"><i class="bi bi-database"></i></div>
-                    <h4>Extensible databases</h4>
-                    <p><code>Greeting</code> loads quotes and stories from bundled JSON files. Permanently extend them with <code>add_bedtime_story()</code>, <code>add_motivation()</code>, and <code>add_fun_fact()</code>.</p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="concept-card">
-                    <div class="concept-icon"><i class="bi bi-boxes"></i></div>
-                    <h4>Independent classes</h4>
-                    <p>Each class manages its own state. There's no shared global state between <code>Greeting</code>, <code>Timer</code>, <code>TextEditor</code>, or any other class. Instantiate as many as you need.</p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="concept-card">
-                    <div class="concept-icon"><i class="bi bi-heart"></i></div>
-                    <h4>Friendly over clever</h4>
-                    <p>cozy-kit trades brevity for clarity. Method names are readable words. Parameters have clear names. Defaults are sensible. Error messages say what went wrong.</p>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<!-- ───────── QUICK START ───────── -->
-<section class="hp-section" id="quickstart">
-    <div class="container">
-        <div class="text-center mb-5 reveal">
-            <span class="section-eyebrow">// Quick start</span>
-            <h2 class="section-title">From <code class="accent-mono">pip install</code> to <span class="accent">running</span> in seconds.</h2>
-            <p class="section-lead mx-auto">
-                Import what you need, instantiate the class, call the method.
-                No setup, no config files, no global state.
-            </p>
-        </div>
-        <div class="row g-5 align-items-start">
-
-            <div class="col-lg-5 reveal">
-                <div class="qs-step">
-                    <div class="step-num">01</div>
-                    <div class="step-body">
-                        <h5>Install from PyPI</h5>
-                        <p class="step-desc">Python 3.8+ required. Dependencies (<code>plyer</code>, <code>requests</code>) install automatically.</p>
-                        <div class="install-card mt-2">
-                            <span class="prompt">$</span>
-                            <code>pip install cozy-kit</code>
-                            <button class="copy-btn" onclick="copyInstall2(this)" aria-label="Copy">
-                                <i class="bi bi-clipboard"></i> Copy
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="qs-step">
-                    <div class="step-num">02</div>
-                    <div class="step-body">
-                        <h5>Import what you need</h5>
-                        <p class="step-desc">Every class is independent. Use one, some, or all in the same script. There is no required initialization order.</p>
-                    </div>
-                </div>
-
-                <div class="qs-step">
-                    <div class="step-num">03</div>
-                    <div class="step-body">
-                        <h5>Call and go</h5>
-                        <p class="step-desc">Instantiate the class, call a method. Most return plain strings — print, log, or splice them however you like.</p>
-                    </div>
-                </div>
-
-                <a href="https://cozy-docs.vercel.app" target="_blank" rel="noopener" class="btn-cozy mt-3 d-inline-flex">
-                    <i class="bi bi-book"></i> Full documentation
                 </a>
             </div>
+            </div>
+        </div>
+    </section>
 
-            <div class="col-lg-7 reveal">
-                <div class="code-card">
-                    <div class="code-head">
-                        <span><i class="bi bi-file-earmark-code"></i> quickstart.py</span>
-                        <div class="code-head-right">
-                            <span class="lang">python</span>
-                            <button class="copy-btn-code" onclick="copyCode(this)" aria-label="Copy">
-                                <i class="bi bi-clipboard"></i>
-                            </button>
-                        </div>
+    <!-- ── CHAPTER: Getting Started ── -->
+    <div class="docs-chapter-divider">
+        <div class="chapter-label"><i class="bi bi-play-circle"></i> Getting Started</div>
+    </div>
+
+    <!-- ── INSTALLATION ── -->
+    <section class="doc-section" id="installation">
+        <div class="container">
+            <div class="row g-5 align-items-start">
+                <div class="col-lg-5 reveal">
+                    <span class="section-eyebrow">// Install</span>
+                    <h2 class="section-title">Installation</h2>
+                    <p class="section-lead">
+                        cozy-kit is on PyPI and installs with a single command. Python 3.8+ is required.
+                    </p>
+                    <div class="info-block">
+                        <div class="info-block-label"><i class="bi bi-check2-circle"></i> Requirements</div>
+                        <ul class="info-list">
+                            <li>Python 3.8 or later</li>
+                            <li><code>plyer</code> — desktop notifications (auto-installed)</li>
+                            <li><code>rich</code> — CLI beauty (auto-installed)</li>
+                        </ul>
                     </div>
+                    <div class="info-block" style="margin-top:1rem;">
+                        <div class="info-block-label"><i class="bi bi-wrench"></i> Contributor setup</div>
+                        <p style="color:var(--text-soft);font-size:.94rem;margin:0;">
+                            Clone the repo and install in editable mode from the repository root.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-7 reveal">
+                    <div class="code-card">
+                        <div class="code-head">
+                            <span><i class="bi bi-terminal"></i> terminal</span>
+                            <div class="code-head-right">
+                                <span class="lang">shell</span>
+                                <button class="copy-btn-code" onclick="copyCode(this)" aria-label="Copy"><i class="bi bi-clipboard"></i></button>
+                            </div>
+                        </div>
+<pre class="code-body"><span class="com"># Install from PyPI</span>
+<span class="fn">pip</span> install cozy-kit
+
+<span class="com"># Upgrade to latest</span>
+<span class="fn">pip</span> install --upgrade cozy-kit
+
+<span class="com"># Editable / contributor install</span>
+<span class="fn">git</span> clone https://github.com/youssefahmed2017/cozy-kit
+<span class="fn">cd</span> cozy-kit
+<span class="fn">pip</span> install -e .</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── QUICK START ── -->
+    <section class="doc-section" id="quickstart">
+        <div class="container">
+            <div class="row g-5 align-items-start">
+                <div class="col-lg-5 reveal">
+                    <span class="section-eyebrow">// Quick start</span>
+                    <h2 class="section-title">From <code class="mono" style="font-size:.85em;color:var(--amber);">pip install</code> to <span class="accent">running</span> in seconds.</h2>
+                    <p class="section-lead">
+                        Import what you need, instantiate the class, call the method. No setup,
+                        no config files, no global state. Just small, friendly classes.
+                    </p>
+                    <p class="section-lead">
+                        Every class is independent — use one, some, or all in the same script.
+                        Each manages its own state.
+                    </p>
+                </div>
+                <div class="col-lg-7 reveal">
+                    <div class="code-card">
+                        <div class="code-head">
+                            <span><i class="bi bi-file-earmark-code"></i> quickstart.py</span>
+                            <div class="code-head-right">
+                                <span class="lang">python</span>
+                                <button class="copy-btn-code" onclick="copyCode(this)" aria-label="Copy"><i class="bi bi-clipboard"></i></button>
+                            </div>
+                        </div>
 <pre class="code-body"><span class="kw">from</span> cozy_kit <span class="kw">import</span> Greeting, Timer, TextEditor, CozyUI
 
 <span class="com"># Personalised greetings</span>
 greet = Greeting(name=<span class="str">"Youssef"</span>, nickname=<span class="str">"yo"</span>)
-<span class="kw">print</span>(greet.<span class="fn">welcome</span>())          <span class="com"># Welcome Youssef!</span>
-<span class="kw">print</span>(greet.<span class="fn">auto_greet</span>())      <span class="com"># Picks based on time + season</span>
+<span class="kw">print</span>(greet.<span class="fn">welcome</span>())             <span class="com"># Welcome Youssef!</span>
+<span class="kw">print</span>(greet.<span class="fn">auto_greet</span>())         <span class="com"># Picks based on time + season</span>
 
 <span class="com"># A Pomodoro that just works</span>
 timer = Timer()
 timer.<span class="fn">start_pomodoro</span>(work_time=<span class="num">25</span>, break_time=<span class="num">5</span>,
-               long_break_time=<span class="num">15</span>, show=<span class="kw">print</span>)
+                long_break_time=<span class="num">15</span>, show=<span class="kw">print</span>)
 
 <span class="com"># Text tricks</span>
 fx = TextEditor()
-<span class="kw">print</span>(fx.<span class="fn">to_morse</span>(<span class="str">"hi"</span>))                    <span class="com"># .... ..</span>
+<span class="kw">print</span>(fx.<span class="fn">to_morse</span>(<span class="str">"hi"</span>))                   <span class="com"># .... ..</span>
 <span class="kw">print</span>(fx.<span class="fn">corrupt</span>(<span class="str">"vibes"</span>, mode=<span class="str">"bubble"</span>))  <span class="com"># ⓥⓘⓑⓔⓢ</span>
 
 <span class="com"># Terminal UI helpers</span>
@@ -399,67 +407,1076 @@ ui = CozyUI()
 <span class="com"># ╔═══════╗</span>
 <span class="com"># ║ done! ║</span>
 <span class="com"># ╚═══════╝</span></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── KEY CONCEPTS ── -->
+    <section class="doc-section" id="key-concepts">
+        <div class="container">
+            <div class="reveal mb-5">
+                <span class="section-eyebrow">// Core ideas</span>
+                <h2 class="section-title">Key Concepts</h2>
+            </div>
+            <div class="row g-4 reveal-stagger">
+                <div class="col-md-6 col-lg-4">
+                    <div class="concept-card">
+                        <div class="concept-icon"><i class="bi bi-boxes"></i></div>
+                        <h4>Independent Classes</h4>
+                        <p>Each class manages its own state and works standalone. There's no shared global state between <code>Greeting</code>, <code>Timer</code>, <code>TextEditor</code>, or any other class.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="concept-card">
+                        <div class="concept-icon"><i class="bi bi-arrow-right-circle"></i></div>
+                        <h4>The <code>show</code> Callback</h4>
+                        <p>Timer methods that display live output take a <code>show</code> callable. Pass <code>print</code>, a logger, a UI label updater — any function that accepts a string.</p>
+                        <div class="concept-example"><code>timer.countdown(5, "min", show=print)</code></div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="concept-card">
+                        <div class="concept-icon"><i class="bi bi-database"></i></div>
+                        <h4>Extensible Databases</h4>
+                        <p><code>Greeting</code> loads quotes and stories from bundled JSON files. Permanently extend them with <code>add_bedtime_story()</code>, <code>add_motivation()</code>, and <code>add_fun_fact()</code>.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="concept-card">
+                        <div class="concept-icon"><i class="bi bi-clock"></i></div>
+                        <h4>Season &amp; Time Awareness</h4>
+                        <p><code>auto_greet()</code> uses the system clock and month to pick between morning, afternoon, evening, and night — with time bands that shift between winter, summer, spring, and autumn.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="concept-card">
+                        <div class="concept-icon"><i class="bi bi-terminal"></i></div>
+                        <h4>String-first Output</h4>
+                        <p>Most methods return plain strings rather than printing directly. You can <code>print()</code>, log, assign to variables, or splice outputs together freely.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── CHAPTER: API Reference ── -->
+    <div class="docs-chapter-divider">
+        <div class="chapter-label"><i class="bi bi-braces"></i> API Reference</div>
+    </div>
+
+    <!-- ── GREETING ── -->
+    <section class="module-section" id="greeting">
+        <div class="container">
+            <div class="module-header reveal">
+                <div class="module-marker"><i class="bi bi-sun"></i> Module 01 / Greeting</div>
+                <h2><span class="accent" style="font-style:italic;">Greeting</span></h2>
+                <p class="lead-text">
+                    A small class that knows your name, the time of day, the season, and whether
+                    today is a holiday. Loads quotes and stories from bundled JSON databases, and
+                    lets you add your own.
+                </p>
+                <div class="import-snippet">
+                    <code><span class="kw">from</span> cozy_kit <span class="kw">import</span> Greeting</code>
+                </div>
+            </div>
+            <div class="row g-5 mt-1">
+                <div class="col-lg-5 reveal">
+
+                    <h4 class="method-group-title">Constructor</h4>
+                    <div class="method-block">
+                        <div class="method-name"><span class="ret">Greeting(</span><span class="args">**details</span><span class="ret">)</span></div>
+                        <p class="method-desc">Keyword arguments: <code>name</code>, <code>age</code>, <code>gender</code>, <code>nickname</code>. All optional. <code>name</code> defaults to <code>"User"</code>. Names are auto-titlecased.</p>
+                    </div>
+
+                    <h4 class="method-group-title">Basic</h4>
+                    <div class="method-block">
+                        <div class="method-name">welcome<span class="args">()</span> <span class="ret">→ str</span></div>
+                        <p class="method-desc">Returns a personalized welcome message.</p>
+                    </div>
+                    <div class="method-block">
+                        <div class="method-name">bye<span class="args">(destination)</span> <span class="ret">→ str</span></div>
+                        <p class="method-desc">A goodbye message, optionally addressed to a destination. Defaults to a generic farewell if omitted.</p>
+                    </div>
+
+                    <h4 class="method-group-title">Time-of-Day Greetings</h4>
+                    <div class="method-block">
+                        <div class="method-name">good_morning<span class="args">()</span> <span class="ret">→ str</span></div>
+                        <p class="method-desc">A morning greeting paired with a random quote from the mornings database.</p>
+                    </div>
+                    <div class="method-block">
+                        <div class="method-name">good_afternoon<span class="args">()</span> <span class="ret">→ str</span></div>
+                        <p class="method-desc">An afternoon greeting with a random afternoon quote.</p>
+                    </div>
+                    <div class="method-block">
+                        <div class="method-name">good_evening<span class="args">()</span> <span class="ret">→ str</span></div>
+                        <p class="method-desc">An evening greeting with a random evening quote.</p>
+                    </div>
+                    <div class="method-block">
+                        <div class="method-name">good_night<span class="args">()</span> <span class="ret">→ str</span></div>
+                        <p class="method-desc">Goodnight wishes plus one randomly chosen bundled bedtime story.</p>
+                    </div>
+                    <div class="method-block">
+                        <div class="method-name">auto_greet<span class="args">()</span> <span class="ret">→ str</span></div>
+                        <p class="method-desc">Selects a greeting based on the current hour and season. Checks <code>holiday_greet()</code> first — if today is a holiday, returns that instead. Time bands shift between winter, summer, and other seasons.</p>
+                    </div>
+
+                    <h4 class="method-group-title">Content</h4>
+                    <div class="method-block">
+                        <div class="method-name">motivate<span class="args">()</span> <span class="ret">→ str</span></div>
+                        <p class="method-desc">Returns a random motivational quote (title + body joined).</p>
+                    </div>
+                    <div class="method-block">
+                        <div class="method-name">fun_fact<span class="args">()</span> <span class="ret">→ str</span></div>
+                        <p class="method-desc">Returns a random fun fact from the bundled database.</p>
+                    </div>
+                    <div class="method-block">
+                        <div class="method-name">random_quote<span class="args">()</span> <span class="ret">→ str</span></div>
+                        <p class="method-desc">Returns a random pick from any of the four time-of-day greeters.</p>
+                    </div>
+                    <div class="method-block">
+                        <div class="method-name">holiday_greet<span class="args">()</span> <span class="ret">→ str | None</span></div>
+                        <p class="method-desc">Returns a wish if today is a recognized holiday, or <code>None</code> otherwise. Supported: New Year's Day (Jan 1), Valentine's Day (Feb 14), Earth Day (Apr 22), International Friendship Day (Jul 30), World Smile Day (Oct 4), Children's Day (Nov 20).</p>
+                    </div>
+
+                    <h4 class="method-group-title">Extend the Database</h4>
+                    <div class="method-block">
+                        <div class="method-name">add_bedtime_story<span class="args">(title, content)</span></div>
+                        <p class="method-desc">Permanently appends a new bedtime story to <code>bedtime_stories.json</code>.</p>
+                    </div>
+                    <div class="method-block">
+                        <div class="method-name">add_motivation<span class="args">(name, content)</span></div>
+                        <p class="method-desc">Appends a new motivational quote to <code>motivations.json</code>.</p>
+                    </div>
+                    <div class="method-block">
+                        <div class="method-name">add_fun_fact<span class="args">(name, content)</span></div>
+                        <p class="method-desc">Appends a new fun fact to <code>fun_facts.json</code>.</p>
+                    </div>
+
+                </div>
+                <div class="col-lg-7 reveal">
+                    <div class="code-card sticky-code">
+                        <div class="code-head">
+                            <span><i class="bi bi-sun"></i> greeting_example.py</span>
+                            <div class="code-head-right">
+                                <span class="lang">python</span>
+                                <button class="copy-btn-code" onclick="copyCode(this)" aria-label="Copy"><i class="bi bi-clipboard"></i></button>
+                            </div>
+                        </div>
+<pre class="code-body"><span class="kw">from</span> cozy_kit <span class="kw">import</span> Greeting
+
+g = Greeting(name=<span class="str">"Youssef"</span>, nickname=<span class="str">"yo"</span>, age=<span class="num">8</span>)
+
+<span class="com"># Time-aware automatic greeting</span>
+<span class="kw">print</span>(g.<span class="fn">auto_greet</span>())
+<span class="com"># Good Morning Youssef!</span>
+<span class="com"># Or good morning Yo!</span>
+<span class="com"># Anyways, here's a quick morning quote.</span>
+<span class="com">#</span>
+<span class="com"># Rise &amp; Shine</span>
+<span class="com"># Every morning is a fresh start...</span>
+
+<span class="com"># Holidays light up automatically</span>
+<span class="kw">print</span>(g.<span class="fn">holiday_greet</span>())
+<span class="com"># 🎉 Happy New Year's Day, Youssef!</span>
+<span class="com"># A new year means new chances to grow.</span>
+
+<span class="com"># A ready-to-print motivational quote</span>
+<span class="kw">print</span>(g.<span class="fn">motivate</span>())
+<span class="com"># One Step</span>
+<span class="com"># You don't have to see the whole staircase...</span>
+
+<span class="com"># Add your own bedtime story</span>
+g.<span class="fn">add_bedtime_story</span>(
+    title=<span class="str">"The Sleepy Robot"</span>,
+    content=<span class="str">"Once upon a circuit board..."</span>,
+)
+
+<span class="com"># Goodbye with a destination</span>
+<span class="kw">print</span>(g.<span class="fn">bye</span>(destination=<span class="str">"the gym"</span>))
+<span class="com"># Bye Youssef! Have a nice day at the gym!</span>
+<span class="com"># Or bye Yo!</span></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── TIMER ── -->
+    <section class="module-section" id="timer">
+        <div class="container">
+            <div class="module-header reveal">
+                <div class="module-marker"><i class="bi bi-stopwatch"></i> Module 02 / Timer</div>
+                <h2><span class="accent" style="font-style:italic;">Timer</span></h2>
+                <p class="lead-text">
+                    Countdowns, Pomodoro cycles, stopwatches, and waits — all with a single
+                    consistent API. Every blocking timer accepts a <code>show</code> callback so
+                    you can route output anywhere: stdout, a curses pane, a Tkinter label.
+                </p>
+                <div class="import-snippet">
+                    <code><span class="kw">from</span> cozy_kit <span class="kw">import</span> Timer</code>
+                </div>
+            </div>
+            <div class="row g-5 mt-1">
+                <div class="col-lg-5 reveal">
+
+                    <h4 class="method-group-title">Constructor</h4>
+                    <div class="method-block">
+                        <div class="method-name"><span class="ret">Timer()</span></div>
+                        <p class="method-desc">No arguments. Initializes internal state for Pomodoro control and stopwatch tracking.</p>
+                    </div>
+
+                    <h4 class="method-group-title">Countdown</h4>
+                    <div class="method-block">
+                        <div class="method-name">countdown<span class="args">(count, time_type, show)</span></div>
+                        <p class="method-desc"><code>time_type</code> is <code>"sec"</code>, <code>"min"</code>, or <code>"hour"</code>. Calls <code>show</code> each second with the remaining time as <code>MM:SS</code> or <code>HH:MM:SS</code>. Fires a desktop notification at zero.</p>
+                    </div>
+
+                    <h4 class="method-group-title">Pomodoro</h4>
+                    <div class="method-block">
+                        <div class="method-name">start_pomodoro<span class="args">(work_time, break_time, long_break_time, show)</span></div>
+                        <p class="method-desc">Creates a new Thread, then runs a full cycle: work → short break → work → … → long break every 4 work sessions. All times are in <strong>minutes</strong>. Sends a desktop notification at each transition.</p>
+                    </div>
+                    <div class="method-block">
+                        <div class="method-name">pause_pomodoro<span class="args">()</span></div>
+                        <p class="method-desc">Pauses a running Pomodoro.</p>
+                    </div>
+                    <div class="method-block">
+                        <div class="method-name">resume_pomodoro<span class="args">()</span></div>
+                        <p class="method-desc">Resumes a paused Pomodoro.</p>
+                    </div>
+                    <div class="method-block">
+                        <div class="method-name">stop_pomodoro<span class="args">()</span></div>
+                        <p class="method-desc">Stops the Pomodoro and resets state.</p>
+                    </div>
+
+                    <h4 class="method-group-title">Utilities</h4>
+                    <div class="method-block">
+                        <div class="method-name">wait<span class="args">(count, time_type)</span></div>
+                        <p class="method-desc">A friendlier <code>time.sleep()</code>. Accepts <code>"sec"</code>, <code>"min"</code>, or <code>"hour"</code>.</p>
+                    </div>
+                    <div class="method-block">
+                        <div class="method-name">get_time<span class="args">()</span> <span class="ret">→ str</span></div>
+                        <p class="method-desc">Returns the current local time as <code>HH:MM:SS</code>.</p>
+                    </div>
+                    <div class="method-block">
+                        <div class="method-name">start_stopwatch<span class="args">()</span></div>
+                        <p class="method-desc">Starts the stopwatch and records the start timestamp.</p>
+                    </div>
+                    <div class="method-block">
+                        <div class="method-name">end_stopwatch<span class="args">()</span> <span class="ret">→ str</span></div>
+                        <p class="method-desc">Stops the stopwatch and returns elapsed time as <code>HH:MM:SS</code>. Resets state so the instance is reusable. Raises <code>StopWatchNotStartedError</code> if never started.</p>
+                    </div>
+
+                </div>
+                <div class="col-lg-7 reveal">
+                    <div class="code-card sticky-code">
+                        <div class="code-head">
+                            <span><i class="bi bi-stopwatch"></i> timer_example.py</span>
+                            <div class="code-head-right">
+                                <span class="lang">python</span>
+                                <button class="copy-btn-code" onclick="copyCode(this)" aria-label="Copy"><i class="bi bi-clipboard"></i></button>
+                            </div>
+                        </div>
+<pre class="code-body"><span class="kw">from</span> cozy_kit <span class="kw">import</span> Timer
+
+t = Timer()
+
+<span class="com"># 5-minute countdown</span>
+t.<span class="fn">countdown</span>(count=<span class="num">5</span>, time_type=<span class="str">"min"</span>, show=<span class="kw">print</span>)
+<span class="com"># 04:59  04:58  ...  00:00  ⏰ Time's up!</span>
+
+<span class="com"># Full Pomodoro session</span>
+t.<span class="fn">start_pomodoro</span>(
+    work_time=<span class="num">25</span>,
+    break_time=<span class="num">5</span>,
+    long_break_time=<span class="num">15</span>,
+    show=<span class="kw">print</span>,
+)
+<span class="com"># 💻 Work Time → ☕ Short Break → 💻 Work Time → ...</span>
+
+<span class="com"># Stopwatch</span>
+t.<span class="fn">start_stopwatch</span>()
+<span class="com"># ... do some work ...</span>
+<span class="kw">print</span>(t.<span class="fn">end_stopwatch</span>())    <span class="com"># 00:03:12</span>
+
+<span class="com"># Current time + friendly wait</span>
+<span class="kw">print</span>(t.<span class="fn">get_time</span>())          <span class="com"># 14:32:08</span>
+t.<span class="fn">wait</span>(count=<span class="num">2</span>, time_type=<span class="str">"sec"</span>)</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── TEXTEDITOR ── -->
+    <section class="module-section">
+        <div class="container" id="text-editor">
+            <div class="module-header reveal">
+                <div class="module-marker"><i class="bi bi-type"></i> Module 03 / TextEditor</div>
+                <h2><span class="accent" style="font-style:italic;">TextEditor</span></h2>
+                <p class="lead-text">
+                    Encodings, case transforms, analysis tools, and four playful corruption modes.
+                    Every method expects a non-empty string and raises <code>EmptyTextError</code> on
+                    empty input.
+                </p>
+                <div class="import-snippet">
+                    <code><span class="kw">from</span> cozy_kit <span class="kw">import</span> TextEditor</code>
+                </div>
+            </div>
+            <div class="row g-5 mt-1">
+                <div class="col-lg-5 reveal">
+
+                    <h4 class="method-group-title">Constructor</h4>
+                    <div class="method-block">
+                        <div class="method-name"><span class="ret">TextEditor()</span></div>
+                        <p class="method-desc">No arguments.</p>
+                    </div>
+
+                    <h4 class="method-group-title">Encoding</h4>
+                    <div class="method-block">
+                        <div class="method-name">to_morse<span class="args">(text)</span> <span class="ret">→ str</span></div>
+                        <p class="method-desc">Converts text to Morse code. Letters, digits, and common punctuation are supported. Unknown characters become <code>?</code>.</p>
+                    </div>
+                    <div class="method-block">
+                        <div class="method-name">caesar_cipher<span class="args">(text, shift)</span> <span class="ret">→ str</span></div>
+                        <p class="method-desc">Caesar cipher with full wrap-around. Negative shifts decode. <code>shift</code> must be an integer — raises <code>InvalidShiftError</code> otherwise. Non-alpha characters pass through unchanged.</p>
+                    </div>
+
+                    <h4 class="method-group-title">Case &amp; Format</h4>
+                    <div class="method-block">
+                        <div class="method-name">to_upper / to_lower / to_title<span class="args">(text)</span> <span class="ret">→ str</span></div>
+                        <p class="method-desc">Standard case conversions.</p>
+                    </div>
+                    <div class="method-block">
+                        <div class="method-name">snake_case / kebab_case / pascal_case<span class="args">(text)</span> <span class="ret">→ str</span></div>
+                        <p class="method-desc">Convert space-separated text to <code>snake_case</code>, <code>kebab-case</code>, or <code>PascalCase</code>.</p>
+                    </div>
+
+                    <h4 class="method-group-title">Analysis &amp; Cleanup</h4>
+                    <div class="method-block">
+                        <div class="method-name">word_count<span class="args">(text)</span> · char_count<span class="args">(text)</span> · count_vowels<span class="args">(text)</span> <span class="ret">→ int</span></div>
+                        <p class="method-desc">Word count (whitespace-delimited), total character count, and vowel count (a e i o u, case-insensitive).</p>
+                    </div>
+                    <div class="method-block">
+                        <div class="method-name">reverse<span class="args">(text)</span> <span class="ret">→ str</span></div>
+                        <p class="method-desc">Reverses the string character by character.</p>
+                    </div>
+                    <div class="method-block">
+                        <div class="method-name">remove_spaces<span class="args">(text)</span> · remove_punctuation<span class="args">(text)</span> <span class="ret">→ str</span></div>
+                        <p class="method-desc">Strip all spaces, or all punctuation characters.</p>
+                    </div>
+                    <div class="method-block">
+                        <div class="method-name">replace_with_spaces<span class="args">(text, replacement)</span> <span class="ret">→ str</span></div>
+                        <p class="method-desc">Replaces every occurrence of <code>replacement</code> with a space.</p>
+                    </div>
+                    <div class="method-block">
+                        <div class="method-name">space_out_letters<span class="args">(text)</span> <span class="ret">→ str</span></div>
+                        <p class="method-desc">Inserts a space after each character: <code>"hi"</code> → <code>"h i"</code>.</p>
+                    </div>
+
+                    <h4 class="method-group-title">Corruption Modes</h4>
+                    <div class="method-block">
+                        <div class="method-name">corrupt<span class="args">(text, mode)</span> <span class="ret">→ str</span></div>
+                        <p class="method-desc">Reskins text in one of four moods (input is lowercased first):</p>
+                        <ul class="mode-list">
+                            <li><code style="color:var(--plum);">"glitch"</code> — Unicode combining diacritics</li>
+                            <li><code style="color:var(--honey);">"broken"</code> — ASCII-art replacements</li>
+                            <li><code style="color:var(--teal);">"bubble"</code> — Circled Unicode letters (ⓐⓑⓒ…)</li>
+                            <li><code style="color:var(--rose);">"void"</code> — Occult symbol substitutions</li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="col-lg-7 reveal">
+                    <div class="code-card sticky-code">
+                        <div class="code-head">
+                            <span><i class="bi bi-type"></i> text_editor_example.py</span>
+                            <div class="code-head-right">
+                                <span class="lang">python</span>
+                                <button class="copy-btn-code" onclick="copyCode(this)" aria-label="Copy"><i class="bi bi-clipboard"></i></button>
+                            </div>
+                        </div>
+<pre class="code-body"><span class="kw">from</span> cozy_kit <span class="kw">import</span> TextEditor
+
+fx = TextEditor()
+
+<span class="com"># Encoding</span>
+<span class="kw">print</span>(fx.<span class="fn">to_morse</span>(<span class="str">"hello world"</span>))
+<span class="com"># .... . .-.. .-.. --- / .-- --- .-. .-.. -..</span>
+
+<span class="kw">print</span>(fx.<span class="fn">caesar_cipher</span>(<span class="str">"hello"</span>, shift=<span class="num">3</span>))   <span class="com"># khoor</span>
+<span class="kw">print</span>(fx.<span class="fn">caesar_cipher</span>(<span class="str">"khoor"</span>, shift=-<span class="num">3</span>))  <span class="com"># hello</span>
+
+<span class="com"># Case &amp; format</span>
+<span class="kw">print</span>(fx.<span class="fn">snake_case</span>(<span class="str">"Cozy Kit Demo"</span>))   <span class="com"># cozy_kit_demo</span>
+<span class="kw">print</span>(fx.<span class="fn">kebab_case</span>(<span class="str">"Cozy Kit Demo"</span>))   <span class="com"># cozy-kit-demo</span>
+<span class="kw">print</span>(fx.<span class="fn">pascal_case</span>(<span class="str">"cozy kit demo"</span>))  <span class="com"># CozyKitDemo</span>
+
+<span class="com"># Analysis</span>
+<span class="kw">print</span>(fx.<span class="fn">word_count</span>(<span class="str">"hi there friend"</span>))   <span class="com"># 3</span>
+<span class="kw">print</span>(fx.<span class="fn">count_vowels</span>(<span class="str">"cozy kit"</span>))         <span class="com"># 2</span>
+<span class="kw">print</span>(fx.<span class="fn">char_count</span>(<span class="str">"hello"</span>))             <span class="com"># 5</span>
+<span class="kw">print</span>(fx.<span class="fn">reverse</span>(<span class="str">"warmth"</span>))               <span class="com"># htmraw</span>
+
+<span class="com"># Cleanup</span>
+<span class="kw">print</span>(fx.<span class="fn">remove_spaces</span>(<span class="str">"cozy kit"</span>))        <span class="com"># cozykit</span>
+<span class="kw">print</span>(fx.<span class="fn">remove_punctuation</span>(<span class="str">"hey, yo!"</span>))   <span class="com"># hey yo</span>
+<span class="kw">print</span>(fx.<span class="fn">space_out_letters</span>(<span class="str">"hi"</span>))          <span class="com"># h i</span>
+
+<span class="com"># Corruption modes</span>
+<span class="kw">print</span>(fx.<span class="fn">corrupt</span>(<span class="str">"vibes"</span>, mode=<span class="str">"bubble"</span>))   <span class="com"># ⓥⓘⓑⓔⓢ</span>
+<span class="kw">print</span>(fx.<span class="fn">corrupt</span>(<span class="str">"hi"</span>,    mode=<span class="str">"broken"</span>))   <span class="com"># #!</span>
+<span class="kw">print</span>(fx.<span class="fn">corrupt</span>(<span class="str">"void"</span>,  mode=<span class="str">"void"</span>))     <span class="com"># V̴⊘ɨ◊</span>
+<span class="kw">print</span>(fx.<span class="fn">corrupt</span>(<span class="str">"hi"</span>,    mode=<span class="str">"glitch"</span>))   <span class="com"># ̴h̶̵i̷</span></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── TEXTCUSTOMIZATIONS ── -->
+    <section class="module-section" id="text-customizations">
+        <div class="container">
+            <div class="module-header reveal">
+                <div class="module-marker"><i class="bi bi-palette"></i> Module 04 / TextCustomizations</div>
+                <h2><span class="accent" style="font-style:italic;">TextCustomizations</span></h2>
+                <p class="lead-text">
+                    Adds ANSI escape codes for color, background, and text styling to any string.
+                    Style names are case-insensitive and spaces are normalized to underscores, so
+                    <code>"Bold Italic"</code> and <code>"bold_italic"</code> are equivalent.
+                </p>
+                <div class="import-snippet">
+                    <code><span class="kw">from</span> cozy_kit <span class="kw">import</span> TextCustomizations</code>
+                </div>
+            </div>
+            <div class="row g-5 mt-1">
+                <div class="col-lg-5 reveal">
+
+                    <h4 class="method-group-title">Constructor</h4>
+                    <div class="method-block">
+                        <div class="method-name"><span class="ret">TextCustomizations()</span></div>
+                        <p class="method-desc">No arguments. Initializes the ANSI style mapping internally.</p>
+                    </div>
+
+                    <h4 class="method-group-title">Methods</h4>
+                    <div class="method-block">
+                        <div class="method-name">customize<span class="args">(text, *styles)</span> <span class="ret">→ str</span></div>
+                        <p class="method-desc">Wraps <code>text</code> with one or more ANSI styles then appends a reset. Unknown style names raise <code>InvalidStyleError</code>. Styles stack — pass as many as you like.</p>
+                    </div>
+                    <div class="method-block">
+                        <div class="method-name"><i class="bi bi-info-circle"></i> Platform note</div>
+                        <p class="method-desc">ANSI codes require a supporting terminal. Windows Terminal, PowerShell 7+, macOS Terminal, and most Linux terminals work natively. Legacy <code>cmd.exe</code> may not.</p>
+                    </div>
+
+                    <h4 class="method-group-title">Style Reference</h4>
+                    <div class="style-table">
+                        <div class="style-group">
+                            <div class="style-group-label" style="color:var(--rose);">Foreground</div>
+                            <div class="style-pills">
+                                <span class="style-pill">red</span><span class="style-pill">green</span><span class="style-pill">blue</span><span class="style-pill">yellow</span><span class="style-pill">cyan</span><span class="style-pill">magenta</span><span class="style-pill">black</span><span class="style-pill">white</span><span class="style-pill">gray</span>
+                            </div>
+                        </div>
+                        <div class="style-group">
+                            <div class="style-group-label" style="color:var(--honey);">Background</div>
+                            <div class="style-pills">
+                                <span class="style-pill">red_bg</span><span class="style-pill">green_bg</span><span class="style-pill">blue_bg</span><span class="style-pill">yellow_bg</span><span class="style-pill">cyan_bg</span><span class="style-pill">magenta_bg</span><span class="style-pill">black_bg</span><span class="style-pill">white_bg</span>
+                            </div>
+                        </div>
+                        <div class="style-group">
+                            <div class="style-group-label" style="color:var(--teal);">Bright</div>
+                            <div class="style-pills">
+                                <span class="style-pill">red_bright</span><span class="style-pill">green_bright</span><span class="style-pill">blue_bright</span><span class="style-pill">yellow_bright</span><span class="style-pill">cyan_bright</span><span class="style-pill">magenta_bright</span><span class="style-pill">white_bright</span>
+                            </div>
+                        </div>
+                        <div class="style-group">
+                            <div class="style-group-label" style="color:var(--plum);">Effects</div>
+                            <div class="style-pills">
+                                <span class="style-pill">bold</span><span class="style-pill">dim</span><span class="style-pill">italic</span><span class="style-pill">underline</span><span class="style-pill">blink</span><span class="style-pill">reverse</span><span class="style-pill">hidden</span>
+                            </div>
+                        </div>
+                        <div class="style-group">
+                            <div class="style-group-label" style="color:var(--amber);">Combinations</div>
+                            <div class="style-pills">
+                                <span class="style-pill">bold_italic</span><span class="style-pill">bold_underline</span><span class="style-pill">italic_underline</span><span class="style-pill">bold_italic_underline</span><span class="style-pill">bold_blink</span><span class="style-pill">italic_blink</span><span class="style-pill">bold_reverse</span><span class="style-pill">bold_italic_blink</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-7 reveal">
+                    <div class="code-card sticky-code">
+                        <div class="code-head">
+                            <span><i class="bi bi-palette"></i> text_customizations_example.py</span>
+                            <div class="code-head-right">
+                                <span class="lang">python</span>
+                                <button class="copy-btn-code" onclick="copyCode(this)" aria-label="Copy"><i class="bi bi-clipboard"></i></button>
+                            </div>
+                        </div>
+<pre class="code-body"><span class="kw">from</span> cozy_kit <span class="kw">import</span> TextCustomizations
+
+c = TextCustomizations()
+
+<span class="com"># Single style</span>
+<span class="kw">print</span>(c.<span class="fn">customize</span>(<span class="str">"warning!"</span>, <span class="str">"red"</span>))
+<span class="com"># → "warning!" in red</span>
+
+<span class="com"># Stack multiple styles</span>
+<span class="kw">print</span>(c.<span class="fn">customize</span>(<span class="str">"important"</span>, <span class="str">"bold"</span>, <span class="str">"yellow"</span>))
+<span class="com"># → bold yellow text</span>
+
+<span class="kw">print</span>(c.<span class="fn">customize</span>(<span class="str">"alert"</span>, <span class="str">"white"</span>, <span class="str">"red_bg"</span>, <span class="str">"bold"</span>))
+<span class="com"># → bold white text on red background</span>
+
+<span class="com"># Pre-mixed combos</span>
+<span class="kw">print</span>(c.<span class="fn">customize</span>(<span class="str">"emphatic"</span>, <span class="str">"bold_italic_underline"</span>))
+
+<span class="com"># Case-insensitive — spaces become underscores</span>
+<span class="kw">print</span>(c.<span class="fn">customize</span>(<span class="str">"hey"</span>, <span class="str">"Bold Italic"</span>))
+<span class="com"># → bold italic "hey"</span>
+
+<span class="com"># Bright variants</span>
+<span class="kw">print</span>(c.<span class="fn">customize</span>(<span class="str">"shiny"</span>, <span class="str">"green_bright"</span>, <span class="str">"bold"</span>))
+<span class="com"># → bold bright-green text</span></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── COZYUI ── -->
+    <section class="module-section" id="cozy-ui">
+        <div class="container">
+            <div class="module-header reveal">
+                <div class="module-marker"><i class="bi bi-bounding-box"></i> Module 05 / CozyUI</div>
+                <h2><span class="accent" style="font-style:italic;">CozyUI</span></h2>
+                <p class="lead-text">
+                    Pretty box-drawing for terminals. Every helper returns a plain string so you
+                    can <code>print()</code>, log, or splice them anywhere. Column widths auto-size
+                    to content.
+                </p>
+                <div class="import-snippet">
+                    <code><span class="kw">from</span> cozy_kit <span class="kw">import</span> CozyUI</code>
+                </div>
+            </div>
+            <div class="row g-5 mt-1">
+                <div class="col-lg-5 reveal">
+
+                    <h4 class="method-group-title">Constructor</h4>
+                    <div class="method-block">
+                        <div class="method-name"><span class="ret">CozyUI()</span></div>
+                        <p class="method-desc">No arguments.</p>
+                    </div>
+
+                    <h4 class="method-group-title">Components</h4>
+                    <div class="method-block">
+                        <div class="method-name">divider<span class="args">(symbol="═", length=30)</span> <span class="ret">→ str</span></div>
+                        <p class="method-desc">A horizontal rule of any character, any length.</p>
+                    </div>
+                    <div class="method-block">
+                        <div class="method-name">cozy_title<span class="args">(text, symbol="═", length=15)</span> <span class="ret">→ str</span></div>
+                        <p class="method-desc">Wraps text with equal dividers on each side: <code>═══ text ═══</code>. <code>length</code> is split evenly left and right.</p>
+                    </div>
+                    <div class="method-block">
+                        <div class="method-name">cozy_table<span class="args">(headers, rows)</span> <span class="ret">→ str</span></div>
+                        <p class="method-desc">A full box-drawn table with auto-computed column widths. <code>headers</code> is a list of strings; <code>rows</code> is a list of equal-length lists. All cells are auto-padded.</p>
+                    </div>
+                    <div class="method-block">
+                        <div class="method-name">progress_bar<span class="args">(percent)</span> <span class="ret">→ str</span></div>
+                        <p class="method-desc">A rounded bar — blue blocks for completed deciles, red blocks for the rest. Example: <code>━━━━━━━ (blue) ━━━ (red)  70%</code>.</p>
+                    </div>
+                    <div class="method-block">
+                        <div class="method-name">cozy_box<span class="args">(text)</span> <span class="ret">→ str</span></div>
+                        <p class="method-desc">A single-line message wrapped in a tidy double-line Unicode box.</p>
+                    </div>
+                    <div class="method-block">
+                        <div class="method-name">spinner<span class="args">(loadtime, load_type, style, message)</span></div>
+                        <p class="method-desc">A live terminal spinner that animates for the given duration, then prints <code>Done!</code>. <code>load_type</code>: <code>"sec"</code>, <code>"min"</code>, or <code>"hour"</code>. <code>style</code>: <code style="color:var(--honey);">"line"</code>, <code style="color:var(--teal);">"dots"</code>, or <code style="color:var(--plum);">"arrows"</code>. <code style="color:var(--honey);">message</code>: Anything you want to display like <code style="color:var(--honey);">Loading</code>.</p>
+                    </div>
+
+                </div>
+                <div class="col-lg-7 reveal">
+                    <div class="code-card sticky-code">
+                        <div class="code-head">
+                            <span><i class="bi bi-bounding-box"></i> cozy_ui_example.py</span>
+                            <div class="code-head-right">
+                                <span class="lang">python</span>
+                                <button class="copy-btn-code" onclick="copyCode(this)" aria-label="Copy"><i class="bi bi-clipboard"></i></button>
+                            </div>
+                        </div>
+<pre class="code-body"><span class="kw">from</span> cozy_kit <span class="kw">import</span> CozyUI
+
+ui = CozyUI()
+
+<span class="kw">print</span>(ui.<span class="fn">cozy_title</span>(<span class="str">"Daily Stats"</span>))
+<span class="com"># ═══════ Daily Stats ═══════</span>
+
+<span class="kw">print</span>(ui.<span class="fn">cozy_table</span>(
+    headers=[<span class="str">"Task"</span>, <span class="str">"Status"</span>, <span class="str">"Time"</span>],
+    rows=[
+        [<span class="str">"Code review"</span>, <span class="str">"done"</span>,    <span class="str">"22m"</span>],
+        [<span class="str">"Write docs"</span>,  <span class="str">"in prog"</span>, <span class="str">"1h"</span>],
+        [<span class="str">"Refactor"</span>,    <span class="str">"queued"</span>,  <span class="str">"—"</span>],
+    ],
+))
+<span class="com"># ╔═════════════╦═════════╦══════╗
+# ║ Task        ║ Status  ║ Time ║
+# ╠═════════════╬═════════╬══════╣
+# ║ Code review ║ done    ║ 22m  ║
+# ║ Write docs  ║ in prog ║ 1h   ║
+# ║ Refactor    ║ queued  ║ —    ║
+# ╚═════════════╩═════════╩══════╝</span>
+
+<span class="kw">print</span>(ui.<span class="fn">progress_bar</span>(<span class="num">70</span>))   <span class="com"># ━━━━━━━ (blue) ━━━ (red)  70%</span>
+
+<span class="kw">print</span>(ui.<span class="fn">cozy_box</span>(<span class="str">"all done!"</span>))
+<span class="com"># ╔═══════════╗</span>
+<span class="com"># ║ all done! ║</span>
+<span class="com"># ╚═══════════╝</span>
+
+<span class="kw">print</span>(ui.<span class="fn">divider</span>(symbol=<span class="str">"─"</span>, length=<span class="num">20</span>))
+<span class="com"># ────────────────────</span>
+
+<span class="com"># Live spinner — animates for 3 sec, then prints Done!</span>
+ui.<span class="fn">spinner</span>(loadtime=<span class="num">3</span>, load_type=<span class="str">"sec"</span>, style=<span class="str">"dots"</span>, message=<span class="str">"Loading"</span>)
+<span class="com"># . .. ... .... → Done!</span></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── DETAILS ── -->
+    <section class="module-section" id="details">
+        <div class="container">
+            <div class="module-header reveal">
+                <div class="module-marker"><i class="bi bi-info-circle"></i> Module 06 / Details</div>
+                <h2><span class="accent" style="font-style:italic;">Details</span></h2>
+                <p class="lead-text">
+                    A tiny class that hands you back package metadata as a ready-to-print table.
+                    It's what powers <code>cozy-kit --info</code> on the command line.
+                </p>
+                <div class="import-snippet">
+                    <code><span class="kw">from</span> cozy_kit <span class="kw">import</span> Details</code>
+                </div>
+            </div>
+            <div class="row g-5 align-items-start mt-1">
+                <div class="col-lg-4 reveal">
+                    <h4 class="method-group-title">Constructor</h4>
+                    <div class="method-block">
+                        <div class="method-name"><span class="ret">Details()</span></div>
+                        <p class="method-desc">No arguments. Pre-loads author, email, description, GitHub, PyPI, docs, and license info.</p>
+                    </div>
+                    <h4 class="method-group-title">Methods</h4>
+                    <div class="method-block">
+                        <div class="method-name">about<span class="args">()</span> <span class="ret">→ rich.table.Table</span></div>
+                        <p class="method-desc">Returns a fully-formatted Rich table with all metadata fields.</p>
+                    </div>
+                </div>
+                <div class="col-lg-8 reveal">
+                    <div class="code-card">
+                        <div class="code-head">
+                            <span><i class="bi bi-info-circle"></i> details_example.py</span>
+                            <div class="code-head-right">
+                                <span class="lang">python</span>
+                                <button class="copy-btn-code" onclick="copyCode(this)" aria-label="Copy"><i class="bi bi-clipboard"></i></button>
+                            </div>
+                        </div>
+<pre class="code-body"><span class="kw">from</span> cozy_kit <span class="kw">import</span> Details
+
+d = Details()
+<span class="kw">print</span>(d.<span class="fn">about</span>())
+
+<span class="com"># ╔══════════════╦══════════════════════════════════╗
+# ║ Detail       ║ Value                            ║
+# ╠══════════════╬══════════════════════════════════╣
+# ║ Author       ║ Youssef Ahmed                    ║
+# ║ Author email ║ youssef.ahmed.29062017@gmail.com ║
+# ║ Description  ║ A cozy Python package…           ║
+# ║ GitHub       ║ github.com/youssefahmed2017/…    ║
+# ║ PyPI         ║ pypi.org/project/cozy-kit/       ║
+# ║ Our Docs     ║ cozy-docs.vercel.app             ║
+# ║ license      ║ MIT                              ║
+# ╚══════════════╩══════════════════════════════════╝</span></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── SMTP MAILER ── -->
+    <section class="module-section" id="smtp-mailer">
+        <div class="container">
+            <div class="module-header reveal">
+                <div class="module-marker"><i class="bi bi-envelope"></i> Module 07 / SMTPMailer</div>
+                <h2><span class="accent" style="font-style:italic;">SMTPMailer</span></h2>
+                <p class="lead-text">
+                    Send plain-text or HTML email through an SMTP server. The mailer supports
+                    TLS login by default and can attach files from local paths.
+                </p>
+                <div class="import-snippet">
+                    <code><span class="kw">from</span> cozy_kit <span class="kw">import</span> SMTPMailer</code>
                 </div>
             </div>
 
-        </div>
-    </div>
-</section>
+            <div class="row g-5">
+                <div class="col-lg-5 reveal">
+                    <h4 class="method-group-title">Constructor</h4>
+                    <div class="method-block">
+                        <div class="method-name"><span class="ret">SMTPMailer(</span><span class="args">host, email, password, use_tls=True, port=587</span><span class="ret">)</span></div>
+                        <p class="method-desc">Creates a mailer for an SMTP host. If <code>use_tls</code> is true, <code>starttls()</code> is called before login.</p>
+                    </div>
+                    <h4 class="method-group-title">Methods</h4>
+                    <div class="method-block">
+                        <div class="method-name">send_mail<span class="args">(subject, body, to_addrs, attachments=None)</span></div>
+                        <p class="method-desc">Sends a plain-text message. <code>to_addrs</code> must be a non-empty list of recipient emails.</p>
+                    </div>
+                    <div class="method-block">
+                        <div class="method-name">send_html_mail<span class="args">(html, to_addrs, subject, attachments=None)</span></div>
+                        <p class="method-desc">Sends an HTML message with the same recipient and attachment behavior as <code>send_mail()</code>.</p>
+                    </div>
+                </div>
+                <div class="col-lg-7 reveal">
+                    <div class="code-card">
+                        <div class="code-head">
+                            <span><i class="bi bi-envelope"></i> send_email.py</span>
+                            <div class="code-head-right">
+                                <span class="lang">python</span>
+                                <button class="copy-btn-code" onclick="copyCode(this)" aria-label="Copy"><i class="bi bi-clipboard"></i></button>
+                            </div>
+                        </div>
+<pre class="code-body"><span class="kw">from</span> cozy_kit <span class="kw">import</span> SMTPMailer
 
-<!-- ───────── CTA ───────── -->
-<section class="hp-cta" id="cta">
-    <div class="cta-orb"></div>
-    <div class="container text-center">
-        <div class="reveal">
-            <span class="section-eyebrow">// Ready when you are</span>
-            <h2 class="section-title mt-3">The full documentation is <span class="accent">waiting for you.</span></h2>
-            <p class="section-lead mx-auto mb-5">
-                Every class, every method, every parameter — documented with examples.
-                From a quick API reference to complete copy-paste scripts.
-            </p>
-            <div class="d-flex gap-3 justify-content-center flex-wrap">
-                <a href="https://cozy-docs.vercel.app" target="_blank" rel="noopener" class="btn-cozy btn-cozy-lg">
-                    <i class="bi bi-book"></i> Read the Documentation
-                </a>
-                <a href="https://pypi.org/project/cozy-kit" target="_blank" rel="noopener" class="btn-ghost">
-                    <i class="bi bi-box-seam"></i> View on PyPI
-                </a>
+mailer = SMTPMailer(
+    host=<span class="str">"smtp.example.com"</span>,
+    email=<span class="str">"you@example.com"</span>,
+    password=<span class="str">"app-password"</span>,
+)
+
+mailer.<span class="fn">send_mail</span>(
+    subject=<span class="str">"Daily note"</span>,
+    body=<span class="str">"Hello from cozy-kit."</span>,
+    to_addrs=[<span class="str">"friend@example.com"</span>],
+)
+
+mailer.<span class="fn">send_html_mail</span>(
+    html=<span class="str">"&lt;h1&gt;Hello&lt;/h1&gt;&lt;p&gt;Sent with cozy-kit.&lt;/p&gt;"</span>,
+    subject=<span class="str">"HTML note"</span>,
+    to_addrs=[<span class="str">"friend@example.com"</span>],
+    attachments=[<span class="str">"report.pdf"</span>],
+)</pre>
+                    </div>
+                </div>
             </div>
         </div>
+    </section>
+
+    <!-- ── CHAPTER: Reference ── -->
+    <div class="docs-chapter-divider">
+        <div class="chapter-label"><i class="bi bi-book"></i> Reference</div>
     </div>
-</section>
+
+    <!-- ── CLI ── -->
+    <section class="doc-section" id="cli">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-5 reveal">
+                    <div class="module-marker"><i class="bi bi-terminal"></i> Command line</div>
+                    <h2><span class="accent" style="font-style:italic;">CLI</span></h2>
+                    <p class="lead-text">
+                        Installing the package also registers a <code>cozy-kit</code> command on your PATH.
+                        Two flags for checking what you've got installed — and each run quietly checks PyPI
+                        for newer versions.
+                    </p>
+                    <div class="method-block">
+                        <div class="method-name">cozy-kit <span class="args">--version</span></div>
+                        <p class="method-desc">Prints the installed version, e.g. <code>cozy-kit v1.0.4</code>.</p>
+                    </div>
+                    <div class="method-block">
+                        <div class="method-name">cozy-kit <span class="args">--info</span></div>
+                        <p class="method-desc">Prints the full <code>Details.about()</code> metadata table — author, email, description, links, license, and a quick explanation paragraph.</p>
+                    </div>
+                    <div class="method-block">
+                        <div class="method-name">cozy-kit <span class="args">--license</span></div>
+                        <p class="method-desc">Print the License for cozy-kit, e.g. <code>MIT License</code></p>
+                    </div>
+                    <div class="method-block">
+                        <div class="method-name">cozy-kit <span class="args">--pypi</span></div>
+                        <p class="method-desc">Opens cozy-kit's PyPI page in a new tab.</p>
+                    </div>
+                    <div class="method-block">
+                        <div class="method-name">cozy-kit <span class="args">--github</span></div>
+                        <p class="method-desc">Opens cozy-kit's GitHub repo in a new tab.</p>
+                    </div>
+                    <div class="method-block">
+                        <div class="method-name">cozy-kit <span class="args">--homepage</span></div>
+                        <p class="method-desc">Opens cozy-kit's Homepage in a new tab.</p>
+                    </div>
+                    <div class="method-block">
+                        <div class="method-name">cozy-kit <span class="args">--docs</span></div>
+                        <p class="method-desc">Opens cozy-kit's Documentation website in a new tab.</p>
+                    </div>
+                    <div class="method-block">
+                        <div class="method-name">cozy-kit <span class="args">--doctor</span></div>
+                        <p class="method-desc">Runs a diagnostic report for Python version, package import, latest PyPI version, and local <code>main.py</code> presence.</p>
+                    </div>
+                    </div>
+                <div class="col-lg-7 reveal">
+                    <div class="code-card">
+                        <div class="code-head">
+                            <span><i class="bi bi-terminal"></i> terminal</span>
+                            <div class="code-head-right">
+                                <span class="lang">shell</span>
+                                <button class="copy-btn-code" onclick="copyCode(this)" aria-label="Copy"><i class="bi bi-clipboard"></i></button>
+                            </div>
+                        </div>
+<pre class="code-body"><span class="com"># Check the installed version</span>
+<span class="fn">cozy-kit</span> --version
+<span class="com"># cozy-kit v1.0.4</span>
+
+<span class="com"># Show package details</span>
+<span class="fn">cozy-kit</span> --info
+<span class="com"># ╔══════════════╦══════════════════════════════════╗
+# ║ Detail       ║ Value                            ║
+# ╠══════════════╬══════════════════════════════════╣
+# ║ Author       ║ Youssef Ahmed                    ║
+# ║ Author email ║ youssef.ahmed.29062017@gmail.com ║
+# ║ ...          ║ ...                              ║
+# ╚══════════════╩══════════════════════════════════╝
+# This package is a package made by Youssef Ahmed.
+# The package's latest version is v1.0.4.</span>
+
+<span class="com"># Show License</span>
+<span class="fn">cozy-kit</span> --license
+<span class="com">
+# MIT License
+</span>
+<span class="com"># Open some Project URLs</span>
+<span class="fn">cozy-kit</span> --pypi
+<span class="com"># Opens "https://pypi.org/project/cozy-kit"</span>
+<span class="com"># Successfully opened cozy-kit's PyPI page ✔️</span>
+<span class="fn">cozy-kit</span> --github
+<span class="com"># Opens "https://github.com/youssefahmed2017/cozy-kit"</span>
+<span class="com"># Successfully opened cozy-kit's GitHub repo ✔️</span>
+<span class="fn">cozy-kit</span> --homepage
+<span class="com"># Opens "https://cozykit-home.vercel.app"</span>
+<span class="com"># Successfully opened cozy-kit's Homepage ✔️</span>
+<span class="fn">cozy-kit</span> --docs
+<span class="com"># Opens "https://cozy-docs.vercel.app"</span>
+<span class="com"># Successfully opened cozy-kit's Documentation ✔️</span>
+
+<span class="com"># Run diagnostics</span>
+<span class="fn">cozy-kit</span> --doctor
+<span class="com"># Shows Python, import, PyPI version, and main.py checks</span>
+                        </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── CHAPTER: Guides ── -->
+    <div class="docs-chapter-divider">
+        <div class="chapter-label"><i class="bi bi-compass"></i> Guides</div>
+    </div>
+
+    <!-- ── EXAMPLES ── -->
+    <section class="doc-section" id="examples">
+        <div class="container">
+            <div class="reveal mb-5">
+                <span class="section-eyebrow">// Practical examples</span>
+                <h2 class="section-title">Examples</h2>
+                <p class="section-lead">Three complete, copy-paste-ready scripts showing common patterns.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-12 reveal">
+                    <div class="example-label">01 / Daily greeter</div>
+                    <div class="code-card">
+                        <div class="code-head">
+                            <span><i class="bi bi-sun"></i> daily_greeter.py</span>
+                            <div class="code-head-right">
+                                <span class="lang">python</span>
+                                <button class="copy-btn-code" onclick="copyCode(this)" aria-label="Copy"><i class="bi bi-clipboard"></i></button>
+                            </div>
+                        </div>
+<pre class="code-body"><span class="kw">from</span> cozy_kit <span class="kw">import</span> Greeting, CozyUI
+
+ui    = CozyUI()
+greet = Greeting(name=<span class="str">"Youssef"</span>, nickname=<span class="str">"yo"</span>)
+
+<span class="kw">print</span>(ui.<span class="fn">cozy_title</span>(<span class="str">"Daily Greeter"</span>))
+<span class="kw">print</span>(greet.<span class="fn">auto_greet</span>())
+<span class="kw">print</span>(ui.<span class="fn">divider</span>())
+<span class="kw">print</span>(greet.<span class="fn">motivate</span>())</pre>
+                    </div>
+                </div>
+                <div class="col-12 reveal">
+                    <div class="example-label">02 / Pomodoro session</div>
+                    <div class="code-card">
+                        <div class="code-head">
+                            <span><i class="bi bi-stopwatch"></i> pomodoro_session.py</span>
+                            <div class="code-head-right">
+                                <span class="lang">python</span>
+                                <button class="copy-btn-code" onclick="copyCode(this)" aria-label="Copy"><i class="bi bi-clipboard"></i></button>
+                            </div>
+                        </div>
+<pre class="code-body"><span class="kw">import</span> time
+<span class="kw">from</span> cozy_kit <span class="kw">import</span> Timer, CozyUI
+
+t  = Timer()
+ui = CozyUI()
+
+t.<span class="fn">start_pomodoro</span>(work_time=<span class="num">25</span>, break_time=<span class="num">5</span>, long_break_time=<span class="num">15</span>, show=<span class="kw">print</span>)
+
+time.<span class="fn">sleep</span>(<span class="num">10</span>)
+<span class="kw">print</span>(ui.<span class="fn">cozy_box</span>(<span class="str">"Pausing..."</span>))
+t.<span class="fn">pause_pomodoro</span>()
+
+time.<span class="fn">sleep</span>(<span class="num">3</span>)
+<span class="kw">print</span>(ui.<span class="fn">cozy_box</span>(<span class="str">"Resuming!"</span>))
+t.<span class="fn">resume_pomodoro</span>()
+
+<span class="com"># t.stop_pomodoro()  — call when done</span></pre>
+                    </div>
+                </div>
+                <div class="col-12 reveal">
+                    <div class="example-label">03 / Styled terminal output</div>
+                    <div class="code-card">
+                        <div class="code-head">
+                            <span><i class="bi bi-palette"></i> styled_output.py</span>
+                            <div class="code-head-right">
+                                <span class="lang">python</span>
+                                <button class="copy-btn-code" onclick="copyCode(this)" aria-label="Copy"><i class="bi bi-clipboard"></i></button>
+                            </div>
+                        </div>
+<pre class="code-body"><span class="kw">from</span> cozy_kit <span class="kw">import</span> CozyUI, TextCustomizations, TextEditor
+
+ui = CozyUI()
+c  = TextCustomizations()
+fx = TextEditor()
+
+header = c.<span class="fn">customize</span>(<span class="str">"RESULTS"</span>, <span class="str">"bold"</span>, <span class="str">"cyan"</span>)
+<span class="kw">print</span>(ui.<span class="fn">cozy_title</span>(header))
+<span class="com">
+# Bold Cyan "====== RESULTS ======"
+
+<span class="kw">print</span>(ui.<span class="fn">cozy_table</span>(
+    headers=[<span class="str">"Task"</span>, <span class="str">"Status"</span>, <span class="str">"Notes"</span>],
+    rows=[
+        [<span class="str">"Write tests"</span>, <span class="str">"✓ done"</span>,    <span class="str">"45m"</span>],
+        [<span class="str">"Deploy"</span>,      <span class="str">"⚠ pending"</span>, <span class="str">"—"</span>],
+        [<span class="str">"Docs"</span>,        <span class="str">"✓ done"</span>,    <span class="str">"1h"</span>],
+    ],
+))
+<span class="com">
+# ╔═════════════╦═══════════╦═══════╗
+# ║ Task        ║ Status    ║ Notes ║
+# ╠═════════════╬═══════════╬═══════╣
+# ║ Write tests ║ ✓ done    ║ 45m   ║
+# ║ Deploy      ║ ⚠ pending ║ —     ║
+# ║ Docs        ║ ✓ done    ║ 1h    ║
+# ╚═════════════╩═══════════╩═══════╝
+</span>
+
+<span class="kw">print</span>(ui.<span class="fn">progress_bar</span>(<span class="num">66</span>))   <span class="com"># ━━━━━━━ (blue) ━━━ (red) 66%</span>
+
+label = fx.<span class="fn">snake_case</span>(<span class="str">"My Feature Flag"</span>)
+<span class="kw">print</span>(c.<span class="fn">customize</span>(label, <span class="str">"dim"</span>, <span class="str">"yellow"</span>))
+</span><span class="com"># dim yellow "my_feature_flag"</span>
+                        </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── FAQ ── -->
+    <section class="doc-section" id="faq">
+        <div class="container">
+            <div class="reveal mb-5">
+                <span class="section-eyebrow">// Common questions</span>
+                <h2 class="section-title">FAQ</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 reveal">
+
+                    <div class="faq-item">
+                        <div class="faq-q"><i class="bi bi-question-circle"></i> Does cozy-kit work on Windows, macOS, and Linux?</div>
+                        <div class="faq-a">Yes. The core classes work on all three platforms. Desktop notifications via <code>plyer</code> (used in <code>Timer.start_pomodoro()</code>) may require extra setup on some Linux environments (e.g., <code>libnotify</code>).</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-q"><i class="bi bi-question-circle"></i> My terminal doesn't show colors. What's wrong?</div>
+                        <div class="faq-a">ANSI codes require a supporting terminal. Windows Terminal, PowerShell 7+, macOS Terminal, and most Linux terminals work natively. Legacy <code>cmd.exe</code> does not — switch to Windows Terminal to fix this immediately.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-q"><i class="bi bi-question-circle"></i> Can I use multiple classes in the same script?</div>
+                        <div class="faq-a">Absolutely. Every class is completely independent — no shared global state. Instantiate as many as you like.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-q"><i class="bi bi-question-circle"></i> How do I add my own data to the Greeting databases?</div>
+                        <div class="faq-a">Use <code>add_bedtime_story(title, content)</code>, <code>add_motivation(name, content)</code>, or <code>add_fun_fact(name, content)</code>. Each permanently appends to the bundled JSON files, so additions persist across scripts.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-q"><i class="bi bi-question-circle"></i> What Python version does cozy-kit require?</div>
+                        <div class="faq-a">Python 3.8 or later.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-q"><i class="bi bi-question-circle"></i> Where can I report a bug or request a feature?</div>
+                        <div class="faq-a">Open an issue on <a href="https://github.com/youssefahmed2017/cozy-kit/issues" target="_blank" rel="noopener" class="inline-link">GitHub</a>.</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    </div><!-- /.docs-content -->
+</div><!-- /.docs-layout -->
 
 <!-- ───────── FOOTER ───────── -->
 <footer id="bottom">
     <div class="container">
         <div class="row g-4">
             <div class="col-md-5">
-                <a class="navbar-brand mb-3" href="#">
-                    <span class="brand-mark">CK</span>
-                    cozy-kit
-                </a>
-                <p class="footer-desc">
-                    A cozy collection of Python utilities — greetings, timers, text tools,
-                    and terminal UI helpers. Built by Youssef Ahmed.
-                    Released under the MIT License.
+                <a class="navbar-brand" href="#intro">
+                <span class="brand-mark">CD</span>
+                cozy-kit Documentation
+            </a>
+                <p style="color:var(--text-muted);font-size:.95rem;line-height:1.7;max-width:400px;">
+                    A cozy Python package with greetings, timers, and text utilities.
+                    Built by Youssef Ahmed. Released under the MIT License.
                 </p>
             </div>
-            <div class="col-6 col-md-3">
-                <h5>Modules</h5>
-                <a href="https://cozy-docs.vercel.app#greeting" target="_blank" rel="noopener">Greeting</a>
-                <a href="https://cozy-docs.vercel.app#timer" target="_blank" rel="noopener">Timer</a>
-                <a href="https://cozy-docs.vercel.app#text-editor" target="_blank" rel="noopener">TextEditor</a>
-                <a href="https://cozy-docs.vercel.app#text-customizations" target="_blank" rel="noopener">TextCustomizations</a>
-                <a href="https://cozy-docs.vercel.app#cozy-ui" target="_blank" rel="noopener">CozyUI</a>
-                <a href="https://cozy-docs.vercel.app#details" target="_blank" rel="noopener">Details</a>
+            <div class="col-6 col-md-2">
+                <h5>API Reference</h5>
+                <a href="#greeting">Greeting</a>
+                <a href="#timer">Timer</a>
+                <a href="#text-editor">TextEditor</a>
+                <a href="#text-customizations">TextCustomizations</a>
+                <a href="#cozy-ui">CozyUI</a>
+                <a href="#details">Details</a>
+                <a href="#smtp-mailer">SMTPMailer</a>
+            </div>
+            <div class="col-6 col-md-2">
+                <h5>Reference</h5>
+                <a href="#installation">Installation</a>
+                <a href="#quickstart">Quick Start</a>
+                <a href="#cli">CLI</a>
+                <a href="#faq">FAQ</a>
             </div>
             <div class="col-6 col-md-2">
                 <h5>Links</h5>
-                <a href="https://cozy-docs.vercel.app" target="_blank" rel="noopener">Documentation</a>
-                <a href="https://pypi.org/project/cozy-kit" target="_blank" rel="noopener">PyPI</a>
+                <a href="https://pypi.org/project/cozy-kit/" target="_blank" rel="noopener">PyPI</a>
                 <a href="https://github.com/youssefahmed2017/cozy-kit" target="_blank" rel="noopener">GitHub</a>
-                <a href="https://github.com/youssefahmed2017/cozy-kit/issues" target="_blank" rel="noopener">Issues</a>
-                <a href="mailto:youssef.ahmed.29062017@gmail.com">Email</a>
+                <a href="mailto:youssef.ahmed.29062017@gmail.com" target="_blank" rel="noopener">
+                    <i class="bi bi-envelope me-1"></i> Email Youssef
+                </a>
             </div>
         </div>
         <div class="footer-bottom d-flex flex-wrap justify-content-between gap-3">
