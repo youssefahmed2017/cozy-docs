@@ -1,8 +1,8 @@
 const CACHE_NAME = "cozykit-v1";
 
 const FILES_TO_CACHE = [
-    "/offline.html",
-    "/dino.html"
+    "dino/offline.html",
+    "dino/dino.html"
 ];
 
 self.addEventListener("install", event => {
